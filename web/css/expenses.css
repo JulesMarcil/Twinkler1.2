@@ -162,7 +162,7 @@
 	-moz-border-radius:5px; /*add some nice CSS3 round corners*/
 	-webkit-border-radius:5px;
 	border-radius:5px;
-	margin-bottom:2em;
+	margin-bottom:5px;
 	margin-left: 10px;
 }
 
@@ -232,6 +232,25 @@
 	position: absolute;
 	bottom: 0;
 	right: 0;
+}
+
+#expense-list-date{
+	margin-bottom: -5px;
+	padding: 5px;
+}
+
+#expense-list-date i{
+	  color:#8C8C8C;
+	  font-size:12px;
+}
+
+#expense-list-date p{
+	  color:#8C8C8C;
+	  font-size:12px;
+}
+
+#expense-list-time p{
+	margin-top: 5px;
 }
 
 /* --- Expense Modal --- */

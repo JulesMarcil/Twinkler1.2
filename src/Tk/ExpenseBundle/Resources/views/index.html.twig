@@ -46,15 +46,13 @@
 					</div>
 				</div>
 			</div>		
-			<div class="span8">
-				<div id="timeline">
-					<a id="today-pinpoint" href="#" data-toggle="tooltip" rel="tooltip" title="#">
-						<img class="pinpoint-button" src="{{ asset('img/frame/tmln-btn.png') }}" class="img-circle" width="20px" style="margin-top:10px;" alt="profile picture">
-					</a>
+			<div class="span8" >
+				<div id="timeline" style="position: relative">
+						<img class="" src="{{ asset('img/frame/group-icon-pointer.png') }}" class="img-circle" width="50px" style="position:absolute; top: -5px; left:2px" alt="profile picture">
 				</div>
 				<div id="timeline-expense-container">
 					{% include "TkExpenseBundle::addExpenseModal.html.twig" %}
-					<div class="expense-list flat-container">
+					<div class="expense-list flat-container" style="margin-bottom: 20px">
 						<div class="expense-header flat-header">
 							<div id="expense-title">
 								<h2>Expense Timeline</h2>
@@ -86,6 +84,9 @@
 					{% else %}
 					<div class="accordion" id="accordion2">
 					{% for expense in all_expenses %}
+
+
+
 					<div class="accordion-group">
 						<div class="expense-list flat-container accordion-heading">
 							<div class="pinpoint-tmln">
