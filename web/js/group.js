@@ -1,21 +1,25 @@
 
 /*--------CHARTS & TIMLINE SIZE--------*/
 var activePage = document.URL.split("/").pop();
+if (activePage!=="lists"){
 var members_nb= members.length;
+};
 var navbarHeight=$("#navbar-row").height();
 
- window.onload =function() {
+
+
+window.onload =function() {
 	$("#navbar-"+activePage).addClass("navbar-item");
 	$('#timeline').height(Math.max($('#balance-expense-container').height(),$('#timeline-expense-container').height())-65+'px');
 }
 
- window.onresize =function() {
+window.onresize =function() {
 	$('#timeline').height(Math.max($('#balance-expense-container').height(),$('#timeline-expense-container').height())-65+'px');
 }
 
 
 /*--------CHARTS--------*/
-
+if (activePage!=="lists"){
 var graphColor=function(graphData){
 	var chartColor=[];
 	for(var i=0; i<graphData.length;i++){
@@ -28,11 +32,13 @@ var graphColor=function(graphData){
 	return chartColor
 }
 
+if (activePage!=="lists"){
 var members_chart=[];
 for (var i = 0; i < members.length; i++) {
 	members_chart[i]='';
 
 }
+
 
 
 var colorFill=graphColor(balances);
@@ -47,16 +53,17 @@ var data = {
 						]
 					}
 
-
+};
 
 var ctx = document.getElementById("balanceChart").getContext("2d");
 new Chart(ctx).Bar(data,{
     scaleOverlay : false,
 	scaleShowLabels : false
 });
-
+};
 
 /*-------labels------*/
+if (activePage!=="lists"){
 $('#chart-labels').width($('#balanceChart').width());
 		for(var i=0; i<members.length;i++){
 			if (activePage==="expenses"){
@@ -88,7 +95,7 @@ $('#chart-labels').width($('#balanceChart').width());
 	};
 
 
-
+};
 
 
 /*-------TOOLTIPS--------*/
@@ -99,11 +106,11 @@ $('#chart-labels').width($('#balanceChart').width());
 
 /*-------Pinpoint buttons on timeline (date)--------*/
 
-     $('.pinpoint-button').hover(function () {
-        this.src = 'http://twinkler.co/img/frame/tmln-btn-hover.png';
-    }, function () {
-        this.src = 'http://twinkler.co/img/frame/tmln-btn.png';
-    });
+$('.pinpoint-button').hover(function () {
+    this.src = 'http://twinkler.co/img/frame/tmln-btn-hover.png';
+}, function () {
+    this.src = 'http://twinkler.co/img/frame/tmln-btn.png';
+});
 
 var today=new Date();
 var dd=today.getDate();
