@@ -1,0 +1,10 @@
+<div>
+	<h3>Your Twinkler friends</h3>
+	{% for friend in app.user.friends  %}
+	{{ friend }}
+	{% endfor %}
+	<h3>Your Facebook friends on Twinkler</h3>
+	{% for friend in twinkler_facebook_friends  %}
+	{{ friend.name }}
+	{% endfor %}
+</div>

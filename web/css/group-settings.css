@@ -1,0 +1,98 @@
+/*---------GROUP SETTINGS-----------*/
+
+.group-info{
+	margin: 30px auto;
+	width: 100%;
+}
+
+.group-info .well{
+	text-align: center;
+}
+
+.group-header{
+	width: 100%;
+	height: 30px;
+}
+
+.group-header a{
+	color: #e9f0f4;
+}
+
+.group-header a:hover{
+	color: #c1cfd9;
+	text-decoration: none;
+}
+
+.group-header h2{
+	margin-top: 2px;
+	margin-bottom: 0px;
+	padding: 0;
+	color:#FCD5D2;
+  	font-size:18px;
+}
+
+.group-mgt-button{
+	text-align: center;
+	margin: 20px 0px;
+
+}
+
+.edit-group{
+	height: 30px;
+	margin: 10px auto;
+	padding-top: 8px;
+	text-align: center;
+	display: inline-block;
+}
+
+.edit-group a div{
+	width: 100%;
+	height: 100%;
+}
+
+.edit-group a{
+	color:white;
+	width: 100%;
+	height: 100%;
+}
+
+.edit-group a:hover{
+	text-decoration: none;
+}
+
+.subheader{
+	color: #4371BF;
+	width: 100%;
+	height: 30px;
+	background-color: #E5F0FF;
+}
+
+.subheader h3{
+	line-height: 28px;
+	font-size: 16px;
+}
+
+.preferences{
+	color: #9eb2c0;
+	line-height: 12px;
+	padding-left: 10px;
+}
+
+/*------chart label table-----*/
+#balance-slimscroll{
+	margin: 0px auto;
+	text-align: center;
+	width: 90%;
+}
+
+
+#chart-labels{
+	margin: 0px auto;
+	margin-top: -30px;
+	color:#F97E76;
+	vertical-align: top;
+}
+
+#chart-labels tr td{
+	width:100px;
+}

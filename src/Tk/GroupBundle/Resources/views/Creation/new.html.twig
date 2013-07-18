@@ -1,0 +1,33 @@
+{% extends 'TkUserBundle:Profile:show.html.twig' %}
+
+{% block content %}
+<div class="new-group row">
+	<div class="span6 offset3" style="text-align: center">
+	<div><img class="pinpoint-button" src="{{ asset('img/frame/group-creation-process-1.png') }}" style="margin-bottom:10px"></div>
+		<div class="flat-container">
+			<div class="flat-header">
+				<h1>Create a New Group</h1>
+			</div>
+			<form action="{{ path('tk_group_new') }}" method="post" {{ form_enctype(form) }} style="margin:0">
+				<div class="new-group-content">
+					    {{ form_errors(form) }}
+
+					    {{ form_errors(form.name) }}
+					    {{ form_widget(form.name) }}
+					<div class="currency">
+					    {{ form_label(form.currency) }}
+					    {{ form_errors(form.currency) }}
+					    {{ form_widget(form.currency) }}
+					</div>
+					    {{ form_rest(form) }}
+				</div>
+
+			    <div class="flat-footer">
+			    	<input type="submit" value="Create Group" class="flat-btn flat-pk" style="border:none;"/>
+			    </div>
+			</form>
+			
+		</div>
+	</div>
+</div>
+{% endblock %}

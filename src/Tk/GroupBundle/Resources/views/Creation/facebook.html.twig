@@ -1,0 +1,22 @@
+<!-- Friend list 
+<div>
+	{% for friend in friends %}
+	<img src="http://graph.facebook.com/{{friend.id}}/picture?width=60&height=60" class="img-circle" alt="{{ friend.name }}" style="position: relative; margin-right: 20px;" width="30px">
+	{{friend.name}}
+	<a href="" class="btn">Add to my group</a>
+	{% endfor %}
+</div>
+-->
+
+
+<button id="fbbtn" class="btn">bouton fb</button>
+
+
+<script>
+	$("#fbbtn").click(function(){
+		FB.ui({method: 'apprequests',
+			   message: 'Join my group on Twinkler',
+			   title: 'c\'est le titre'
+			   });
+	});
+</script>

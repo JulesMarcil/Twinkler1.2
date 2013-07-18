@@ -1,0 +1,11 @@
+parameters:
+#    tk_list.example.class: Tk\ListBundle\Example
+
+services:
+    tk_list.todos:
+        class: Tk\ListBundle\Services\Todos
+        arguments: [@doctrine.orm.entity_manager]
+
+    tk_list.shopping:
+        class: Tk\ListBundle\Services\Shopping
+        arguments: [@doctrine.orm.entity_manager]
