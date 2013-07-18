@@ -68,6 +68,17 @@
 	color:#f97e76;
 }
 
+
+.payback-table{
+	width: 100%;
+}
+
+.payback-table table{
+	text-align: center;
+	margin: 10px auto;
+	max-width: 100%;
+}
+
 @media only screen and (min-width: 768px) {
 	#settlement:after{ /*arrow added to rightarrowdiv DIV*/
 		content:'';

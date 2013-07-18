@@ -20,12 +20,25 @@
 							<h2>Payback</h2>
 						</div>
 					</div>
-					{% if debts|length == 0 %}
-					<p style="margin-top: 10px; color:rgb(67,113,191)">No debts at all, lucky you !</p>
-					{% else %}
-					{% for debt in debts %}
-						<p>{{ debt[0] }} gives {{ debt[1] }}{{ currency }} to {{debt[2] }}</p>
-					{% endfor %}
+						{% if debts|length == 0 %}
+						<p style="margin-top: 10px; color:rgb(67,113,191)">No debts at all, lucky you !</p>
+						{% else %}
+
+						<div class="payback-table">
+							<table>
+								{% for debt in debts %}
+								<tr style="height: 30px;">
+									<td style="text-align: left;padding-left: 5px"><img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" width="20px" 	alt="Payer picture" style="position: relative">  {{ debt[0] }}</td> 
+									<td style="color:#C8C8C8; font-size: 12px; widrh: 30px;padding-left: 5px">gives </td>
+									<td style="color:#99B335;padding-left: 5px">{{ debt[1] }} {{ currency }}</td>
+									<td style="color:#C8C8C8; font-size: 12px;padding-left: 5px"> to </td>
+									<td style="text-align: left; padding-left: 5px"><img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" width="20px" 	alt="Payer picture" style="position: relative"> {{debt[2] }}</td>
+								</tr>
+								{% endfor %}
+
+							</table>
+						</div>
+
 					{% endif %}
 				</div>
 				<div id="balance" class="flat-container">
