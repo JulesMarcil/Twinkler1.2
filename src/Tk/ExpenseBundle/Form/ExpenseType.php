@@ -29,7 +29,7 @@ class ExpenseType extends AbstractType
                             }
                         ))
                 ->add('name', 'text')
-                ->add('amount', 'number', array('precision' => 2))
+                ->add('amount', 'money', array('currency' => $group->getCurrency()->getIso()))
                 ->add('date', 'date', array(
                         'input'    => 'datetime',
                         'widget'   => 'choice',
@@ -39,7 +39,7 @@ class ExpenseType extends AbstractType
                         'property'      => 'name',
                         'multiple'      => 'true',
                         'expanded'      => 'true',
-                        'required'      => 'false',
+                        'required'      => 'true',
                         'query_builder' => function(MemberRepository $member) use ($group) {
                             return $member->createQueryBuilder('m')
                                       ->where('m.tgroup = :group')

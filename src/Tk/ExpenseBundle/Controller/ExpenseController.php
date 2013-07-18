@@ -32,15 +32,16 @@ class ExpenseController extends Controller
 
     public function newAction()
     {
-    	$expense = new Expense();
-    	$expense->setAddedDate(new \DateTime('now'));
-        $expense->setDate(new \Datetime('today'));
-    	$expense->setActive(true);
+    	$member = $this->getUser()->getCurrentMember();
+        $group = $member->getTGroup();
 
-        $member = $this->getUser()->getCurrentMember();
+        $expense = new Expense();
         $expense->setAuthor($member);
-        $expense->setGroup($member->getTGroup());
-        $group = $member->getTGroup();               
+        $expense->setOwner($member);
+        $expense->setGroup($group);
+        $expense->setAddedDate(new \DateTime('now'));
+        $expense->setDate(new \Datetime('today'));
+        $expense->setActive(true);
 
         $form = $this->createForm(new ExpenseType($group), $expense);
                      

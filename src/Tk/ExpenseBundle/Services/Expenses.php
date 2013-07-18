@@ -154,7 +154,7 @@ class Expenses {
             $cn = current($negative);
             $kp = key($positive);
             $kn = key($negative);
-            $min = min($cp,-$cn);
+            $min = round(min($cp,-$cn),2);
 
             $payments[] = array($kn, $min, $kp);
 
