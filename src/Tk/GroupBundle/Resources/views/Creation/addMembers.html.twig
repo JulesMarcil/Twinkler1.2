@@ -1,4 +1,4 @@
-{% extends 'TkUserBundle:Profile:show.html.twig' %}
+{% extends 'TkGroupBundle::index.html.twig' %}
 
 {% block content %}
 
@@ -6,40 +6,28 @@
 	<div><img class="pinpoint-button" src="{{ asset('img/frame/group-creation-process-2.png') }}" style="margin-bottom:10px"></div>
 	<div class="span6 offset3 flat-container">
 		<div class="flat-header" style="margin-bottom: 20px;">
-			<h1>Add members to your group</h1>
+			<h1>Add a member to your group <b>{{ app.user.currentMember.tgroup.name }}</b></h1>
 		</div>
+		<h4>Enter his name (and email)</h4>
 		<div>
-			<p><b>Current members</b></p>
-			{% for member in app.user.currentMember.tgroup.members %}
-			<div style="text-align: left; display: inline-block;">
-			{% if member.user %}
-				{% if member.user.facebookId %}
-				<img src="http://graph.facebook.com/{{member.user.facebookId}}/picture?width=60&height=60" class="img-circle" alt="{{ member.name }}" style="position: relative; margin-right: 20px;" width="30px">
-				{% else %}
-				<img src="{{ asset(member.user.picture.path) }}" class="img-circle" alt="{{ member.name }}" style="position: relative; margin-right: 20px;" width="30px">
-				{% endif %}
-			{% else %}
-				<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" alt="{{ member.name }}" style="position: relative; margin-right: 20px;" width="30px">
-			{% endif %}
-				<span>{{ member.name }}</span>
-			</div>
-			<br><br>
-			{% endfor %}
-			<p><b>Add Members to the group "{{ app.user.currentMember.tgroup.name }}"</b></p>
 			{% render(controller('TkGroupBundle:Default:addMember')) %}
-
-		</div>
-		<div class="flat-footer"s style="padding-top: 20px;">
-			<a href="{{ path('tk_group_send_invitation') }}" class="btn btn-success">Validate and continue</a>
 		</div>
 
-		{% if is_granted('ROLE_FACEBOOK') %}
-		<!--
 		<div>
 			{% render controller('TkUserBundle:Friends:inviteFriends') %}
 		</div>
-		-->
+
+		{% if is_granted('ROLE_FACEBOOK') %}
+		<div>
+			{% render controller('TkUserBundle:Friends:inviteFacebook') %}
+		</div>
 		{% endif %}
+
+		<div class="flat-footer"s style="padding-top: 20px; margin-top: 20px; padding-bottom: 0;">
+			<a href="{{ path('tk_group_send_invitation') }}">Validate and continue</a>
+		</div>
+
+
 	</div>
 </div>
 

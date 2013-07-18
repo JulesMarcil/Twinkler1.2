@@ -285,6 +285,42 @@ class DefaultController extends Controller
             ));
     }
 
+    public function addFriendAction($id)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $friend = $em->getRepository('TkUserBundle:User')->find($id);
+
+        $member = new Member();
+        $member->setUser($friend);
+        $member->setName($friend->getUsername());
+        $member->setTGroup($this->getUser()->getCurrentMember()->getTGroup());
+
+        $em->persist($member);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('tk_group_add_members'));
+    }
+
+    public function addFacebookAction($id)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $query = $em->createQuery(
+                    'SELECT u FROM TkUserBundle:User u WHERE u.facebookId = :id')
+                  ->setParameter('id', $id);
+        $friend = $query->getResult();
+
+        $member = new Member();
+        $member->setUser($friend[0]);
+        $member->setName($friend[0]->getUsername());
+        $member->setTGroup($this->getUser()->getCurrentMember()->getTGroup());
+
+        $em->persist($member);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('tk_group_add_members'));
+    }
+
     public function sendReminderEmailAction()
     {
 
