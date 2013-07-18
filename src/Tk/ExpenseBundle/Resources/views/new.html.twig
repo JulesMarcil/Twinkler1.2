@@ -60,11 +60,7 @@
 		</div>
 	</div>
 
-	<div style="display:none">
-	{{ form_row(form.users) }}
-	</div>
-
-    {{ form_rest(form) }}
+	{{ form_widget(form._token) }}
 
     <div class="flat-footer">
     	<input type="submit" class="btn btn-success" value="Add Expense"/>
