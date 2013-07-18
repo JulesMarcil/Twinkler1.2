@@ -126,7 +126,7 @@
 
 	<div class="span6">
 		<div id="group-summary" class="flat-container">
-			<div class="flat-header" style="height:34px;min-height:34px;">
+			<div class="flat-header" style="height:34px;min-height:34px; margin-bottom:10px">
 				<h3>Your Groups</h3>
 			</div>
 
@@ -135,9 +135,9 @@
 			{% else %}
 			{% for member in app.user.members %}
 			<div id="group-box">
-				<div class="accordion" id="accordion2" style="display:inline-block; position:relative; width:100%">
+				<div class="accordion" id="accordion2" style="display:inline-block; position:relative; width:100%;">
 					<div class="accordion-group-icon">
-						<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#accordion-{{ member.id }}" style="display: inline-block"><img src="{{ asset('img/frame/group.png') }}"	alt="{{ member.name }}" ></a>
+						<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#accordion-{{ member.id }}" style="display: inline-block"><img src="{{ asset('img/frame/group-icon.png') }}"	width="40px" alt="{{ member.name }}" ></a>
 					</div>
 				  	<div class="accordion-group">
 					    <div class="accordion-heading">
@@ -168,7 +168,8 @@
 							</div>
 						</div>
 					</div>
-
+				</div>	
+			</div>
 				    <div id="accordion-{{ member.id }}" class="accordion-body collapse out">
 				      	<div class="accordion-inner">
 					        <div>
@@ -189,8 +190,6 @@
 							</div>
 				      	</div>
 				    </div>
-				</div>														
-			</div>
 			{% endfor %}
 			<div>
 				<a href="">See closed groups (0)</a>
