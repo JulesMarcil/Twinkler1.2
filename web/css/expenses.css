@@ -234,23 +234,19 @@
 	right: 0;
 }
 
-#expense-list-date{
-	margin-bottom: -5px;
-	padding: 5px;
+.liner{
+	position: relative;
 }
 
-#expense-list-date i{
-	  color:#8C8C8C;
-	  font-size:12px;
-}
-
-#expense-list-date p{
-	  color:#8C8C8C;
-	  font-size:12px;
-}
-
-#expense-list-time p{
-	margin-top: 5px;
+.liner:before{
+	content:""; 
+    display:block; 
+    position:absolute; 
+    left:0; 
+    bottom:0px; 
+    width:100%; 
+    height:1px;                          
+    background:#d4d4d4;
 }
 
 /* --- Expense Modal --- */
