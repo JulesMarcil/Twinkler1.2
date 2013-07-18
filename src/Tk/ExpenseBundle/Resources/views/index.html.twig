@@ -96,8 +96,12 @@
 					</div>
 					{% else %}
 					<div class="accordion" id="accordion2">
+					{% set previous = true %}
 					{% for expense in all_expenses %}
 
+    
+					{% if previous!=expense %}
+  
 				    <div style="display: inline-block; width:100%; margin-left: 15px; margin-bottom: 10px; padding:5">
 				        <div style="display: inline-block; width:80%; padding:5">
 				            <div class="liner" style="min-height:50%; border-bottom: 1px solid #fff; margin-top:-5px;"></div>
@@ -109,6 +113,9 @@
 				            <div class="liner" style="min-height:50%; border-bottom: 1px solid #fff; margin-top:-5px;"></div>
 				        </div>
 				    </div>
+
+					{% endif %}
+					{% set previous = expense %}
 
 					<div class="accordion-group">
 						<div class="expense-list flat-container accordion-heading">
