@@ -1,0 +1,37 @@
+{% extends '::base.html.twig' %}
+
+{% block head %}  
+    <title>Twinkler - The Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ asset('css/landing-page.css') }}" rel="stylesheet" media="screen">
+    <link href="{{ asset('css/links.css') }}" rel="stylesheet" media="screen">
+{% endblock %}
+
+{% block body %}
+<div class="container">
+	<div class="row">
+		<div class="span2" style="padding-top: 10px; text-align: center">
+			<a href="{{ path('tk_user_homepage') }}">
+				<img id="tk-logo-hp" src="{{ asset('img/logo/twinkler_logo.png') }}" width="200px" alt="twinkler logo" style="margin-bottom: 40px;">
+			</a>
+			<a href="{{ path('tk_welcome_blog') }}"><i class="icon-arrow-left"></i> Back to the Blog</a>
+			<div>
+				<h6 style="border-bottom: solid 1px; margin-top: 40px;">Other Blog Posts</h6>
+				<ul style="text-align: left">
+					<li><a href="{{ path('tk_welcome_blog_post', { 'date': '130717' }) }}">
+						Work hard, play hard! (Jul 17th)</a></li>
+					<li><a href="{{ path('tk_welcome_blog_post', { 'date': '130716' }) }}">
+						This is the beginning my friends! (Jul 16th)</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="blog-post span6 offset1" style="margin-top: 20px; margin-bottom: 60px;text-align: center;">
+			
+		{% block blog_post %}
+		{% endblock %}
+
+	</div>
+</div>
+
+{% endblock %}

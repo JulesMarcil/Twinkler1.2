@@ -45,6 +45,11 @@ class DefaultController extends Controller
         return $this->render('TkWelcomeBundle:Links:blog.html.twig');
     }
 
+    public function blogPostAction($date)
+    {
+        return $this->render('TkWelcomeBundle:BlogPosts:post'.$date.'.html.twig');
+    }
+
     public function pressAction(){
         return $this->render('TkWelcomeBundle:Links:press.html.twig');
     }

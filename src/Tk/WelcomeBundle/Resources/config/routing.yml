@@ -25,6 +25,9 @@ tk_welcome_about:
 tk_welcome_blog:
     pattern: /blog
     defaults: { _controller: TkWelcomeBundle:Default:blog }
+tk_welcome_blog_post:
+    pattern: /blog/post/{date}
+    defaults: { _controller: TkWelcomeBundle:Default:blogPost }
 
 tk_welcome_press:
     pattern: /press
