@@ -9,6 +9,13 @@
 			<h3>You have been invited to join the group <br>"{{ group.name }}"</h3>
 			</div>
 			<div>
+				{% if group.members|length == 0 %}
+			 		<div class="box">
+						<p>All the members have join the group</p>
+						<p>Ask someone to add a member to the group for you and you will see your name appear here.</p>
+						<p>Sorry for that...</p>
+					</div>
+				{% else %}
 				<p>Click on your name in the list below</p>
 				{% for member in group.members %}
 					{% if member.user != null %}
@@ -18,9 +25,7 @@
 						</div>
 					{% endif %}
 				{% endfor %}
-			</div>
-			<div class="flat-footer">
-				<p>You are not in the list ? <a href="">Join the group here</a></p>
+				{% endif %}
 			</div>
 		</div>
 	</div>
