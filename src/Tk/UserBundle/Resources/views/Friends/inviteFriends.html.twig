@@ -1,38 +1,36 @@
-<div>
+<div class="add-members">
 	<div class="subheader">
 		<span style="display: block; height: 30px; vertical-align: middle; padding-left: 10px;">
 		<h3>Find Friends from Twinkler</h3>
 		</span>
 	</div>
 
-
 	{% if app.user.friends|length == 0 %}
-		<p>Yo do not have any friend on Twinkler yet, invite them !</p>
+	<p>Yo do not have any friend on Twinkler yet, invite them !</p>
 	{% else %}
-	{% for user in app.user.friends  %}
+	<table>
+		<tbody>
+		{% for user in app.user.friends  %}
 		{% if user.currentMember == null or user.currentMember.tgroup != app.user.currentMember.tgroup %}
 
-
-		<div class="add-members" style="display:inline-block; text-align: center; margin: 0px 10px">
-			<a href="{{ path('tk_group_add_friend', { 'id' : user.id }) }}">
-			<div>
+		<tr>
+			<td style="width: 40px;">
 				{% if user.facebookId %}
-				<img src="http://graph.facebook.com/{{user.facebookId}}/picture?width=60&height=60" class="img-circle" alt="{{ user }}" style="position: relative;" width="30px">
+				<img src="http://graph.facebook.com/{{user.facebookId}}/picture?width=60&height=60" alt="{{ user }}" style="position: relative;" width="30px">
 				{% else %}
-				<img src="{{ asset(user.picture.path) }}" class="img-circle" alt="{{ user }}" style="position: relative;" width="30px">
+				<img src="{{ asset(user.picture.path) }}" alt="{{ user }}" style="position: relative;" width="30px">
 				{% endif %}
-			</div>
-			<div>
+			</td>
+			<td>
 				{{ user }}
-			</div>
-			</a>
-		</div>
-
-
-		
-
+			</td>
+			<td class="add-button"><a href="{{ path('tk_group_add_friend', { 'id' : user.id }) }}" class="btn btn-small">Add</a></td>
+		</tr>
 
 		{% endif %}
-	{% endfor %}
+		{% endfor %}
+		</tbody>
+	</table>
+
 	{% endif %}
 </div>

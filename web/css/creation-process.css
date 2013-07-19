@@ -21,6 +21,19 @@
 	font-size: 16px;
 }
 
-.add-members a:hover{
-	text-decoration: none;
-	}
+.add-members{
+	text-align: left;
+}
+.add-members table{
+	width: 90%; margin: auto;
+}
+.add-members tr{
+	height: 40px;
+	border-bottom: solid 1px #C8C8C8;
+}
+.add-members tr:last-child{
+	border-bottom: none;
+}
+.add-members .add-button{
+	width: 20%; text-align: right;
+}

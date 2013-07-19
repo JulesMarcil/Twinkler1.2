@@ -1,14 +1,25 @@
-<div>
-	<h4>or find other friends on Twinkler</h3>
-	{% if twinkler_facebook_friends|length == 0 %}
-		<p>You do not have any other friend on Twinkler :( Invite them !</p>
-	{% else %}
-	{% for user in twinkler_facebook_friends %}
-	<div>
-		<img src="http://graph.facebook.com/{{user.facebookId}}/picture?width=60&height=60" class="img-circle" alt="{{ user }}" style="position: relative; margin-right: 20px;" width="30px">
-		{{ user }}
-		<a href="{{ path('tk_group_add_friend', { 'id' : user.id }) }}" class="btn btn-small">Add to my group</a>
+<div class="add-members">
+	<div class="subheader">
+		<span style="display: block; height: 30px; vertical-align: middle; padding-left: 10px;">
+		<h3>Or Find more friends who are on Twinkler</h3>
+		</span>
 	</div>
-	{% endfor %}
-	{% endif %}
+
+	{% if twinkler_facebook_friends|length == 0 %}
+	<p>You do not have any other friend on Twinkler :( Invite them !</p>
+	{% else %}
+	<table>
+		<tbody>
+		{% for user in twinkler_facebook_friends %}
+		<tr>
+			<td style="width: 40px;">
+				<img src="http://graph.facebook.com/{{user.facebookId}}/picture?width=60&height=60" alt="{{ user }}" style="position: relative; margin-right: 20px;" width="30px">
+			</td>
+			<td>{{ user }}</td>
+			<td class="add-button"><a href="{{ path('tk_group_add_friend', { 'id' : user.id }) }}" class="btn btn-small">Add</a></td>
+		</tr>
+		{% endfor %}
+		{% endif %}
+		</tbody>
+	</table>
 </div>
