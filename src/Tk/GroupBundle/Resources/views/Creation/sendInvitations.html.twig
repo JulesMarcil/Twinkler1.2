@@ -4,20 +4,22 @@
 
 <div class="new-group row" style="text-align: center">
 	<div><img class="pinpoint-button" src="{{ asset('img/frame/group-creation-process-3.png') }}" style="margin-bottom:10px"></div>
-	<div class="span6 offset3 flat-container">
-		<div class="flat-header" style="margin-bottom: 20px;">
-			<h1>Invite your friends to join your group</h1>
+	<div class="span4 offset4 flat-container">
+		<div class="suberheader flat-header" style="margin-bottom: 20px;">
+			<h3>Invite your friends to join your group</h3>
 		</div>
 		<div>
-			<p>Share the following link with your friends who are not on Twinkler so that they can acces the member you created for them</p>
-			<input type="text" value="http://www.twinkler.co/invitation/{{app.user.currentMember.tgroup.id}}/{{app.user.currentMember.tgroup.invitationToken}}" style="width: 90%"></input>
+			<p>Just share ths link with your friends!</p>
+			<div class="alert alert-success" style="width: 60%; margin: 20px auto">
+			http://www.twinkler.co/invitation/{{app.user.currentMember.tgroup.id}}/{{app.user.currentMember.tgroup.invitationToken}}
+			</div>
 		</div>
-		<div>
-			<p>Or share with Facebook inbox</p>
+		<div  style="margin-bottom:20px">
+			<p>Or send Facebooks's invites:</p>
 			<a class="btn btn-primary" href="https://www.facebook.com/dialog/send?app_id=130641483808717&name=Click%20here%20to%20join%20my%20group%20on%20Twinkler&link=http://www.twinkler.co/invitation/{{app.user.currentMember.tgroup.id}}/{{app.user.currentMember.tgroup.invitationToken}}&redirect_uri=http://www.twinkler.co/group/send_invitation">Send Facebook Inbox</a>
 		</div>
-		<div class="flat-footer"s style="padding-top: 20px;">
-			<a href="{{ path('tk_group_homepage') }}">Validate and continue <i class="icon-arrow-right"></i></a>
+		<div class="flat-footer"s style="padding: 20px;">
+			<a href="{{ path('tk_group_homepage') }}"><div class="flat-btn flat-pk" style="padding: 10px 20px;">Validate and Continue</div></a>
 		</div>
 	</div>
 </div>

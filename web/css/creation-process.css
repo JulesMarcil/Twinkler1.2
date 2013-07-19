@@ -1,0 +1,26 @@
+.new-group .flat-container .flat-header{
+	min-height: 30px
+}
+
+.flat-container .flat-header h3{
+	color:#FCD5D2;
+	font-size:16px;
+	margin:0 15px;
+}
+
+.subheader{
+	color: #4371BF;
+	width: 100%;
+	height: 30px;
+	background-color: #E5F0FF;
+	margin-bottom: 20px;
+}
+
+.subheader h3{
+	line-height: 28px;
+	font-size: 16px;
+}
+
+.add-members a:hover{
+	text-decoration: none;
+	}

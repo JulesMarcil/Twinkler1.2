@@ -5,9 +5,8 @@
 	<div><img class="pinpoint-button" src="{{ asset('img/frame/group-creation-process-2.png') }}" style="margin-bottom:10px"></div>
 	<div class="span6 offset3 flat-container">
 		<div class="flat-header" style="margin-bottom: 20px;">
-			<h1>Add a member to your group <b>{{ app.user.currentMember.tgroup.name }}</b></h1>
+			<h3>Add members to <b>{{ app.user.currentMember.tgroup.name }}</b></h3>
 		</div>
-		<h4>Enter his name (and email)</h4>
 		<div>
 			{% render(controller('TkGroupBundle:Default:addMember')) %}
 		</div>
@@ -20,7 +19,7 @@
 		</div>
 		{% endif %}
 		<div class="flat-footer"s style="padding-top: 20px; margin-top: 20px; padding-bottom: 0;">
-			<a href="{{ path('tk_group_send_invitation') }}">Validate and continue <i class="icon-arrow-right"></i></a>
+			<a href="{{ path('tk_group_send_invitation') }}"><div class="flat-btn flat-pk" style="padding: 10px 20px">Validate and Continue</div></a>
 		</div>
 	</div>
 </div>

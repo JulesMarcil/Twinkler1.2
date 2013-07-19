@@ -271,8 +271,18 @@ a:hover{
 .new-group .flat-footer input{
 	width: 200px;
 	height: 40px;
-	font-size: 20px;
+	margin: 10px 30px;
+	font-size: 16px;
+
 }
 
+.new-group .flat-container .flat-header{
+	min-height: 30px
+}
 
-
+.new-group .flat-container .flat-header h3{
+	color:#FCD5D2;
+  	font-size:16px;
+  	margin:0px 70px;
+  	text-align: left;
+}

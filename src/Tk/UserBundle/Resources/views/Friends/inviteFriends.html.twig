@@ -1,17 +1,37 @@
 <div>
-	<h4>or add one of your Twinkler friends</h4>
+	<div class="subheader">
+		<span style="display: block; height: 30px; vertical-align: middle; padding-left: 10px;">
+		<h3>Find Friends from Twinkler</h3>
+		</span>
+	</div>
+
+
 	{% if app.user.friends|length == 0 %}
 		<p>Yo do not have any friend on Twinkler yet, invite them !</p>
 	{% else %}
 	{% for user in app.user.friends  %}
 		{% if user.currentMember == null or user.currentMember.tgroup != app.user.currentMember.tgroup %}
-		{% if user.facebookId %}
-		<img src="http://graph.facebook.com/{{user.facebookId}}/picture?width=60&height=60" class="img-circle" alt="{{ user }}" style="position: relative; margin-right: 20px;" width="30px">
-		{% else %}
-		<img src="{{ asset(user.picture.path) }}" class="img-circle" alt="{{ user }}" style="position: relative; margin-right: 20px;" width="30px">
-		{% endif %}
-		{{ user }}
-		<a href="{{ path('tk_group_add_friend', { 'id' : user.id }) }}" class="btn btn-small">Add to my group</a>
+
+
+		<div class="add-members" style="display:inline-block; text-align: center; margin: 0px 10px">
+			<a href="{{ path('tk_group_add_friend', { 'id' : user.id }) }}">
+			<div>
+				{% if user.facebookId %}
+				<img src="http://graph.facebook.com/{{user.facebookId}}/picture?width=60&height=60" class="img-circle" alt="{{ user }}" style="position: relative;" width="30px">
+				{% else %}
+				<img src="{{ asset(user.picture.path) }}" class="img-circle" alt="{{ user }}" style="position: relative;" width="30px">
+				{% endif %}
+			</div>
+			<div>
+				{{ user }}
+			</div>
+			</a>
+		</div>
+
+
+		
+
+
 		{% endif %}
 	{% endfor %}
 	{% endif %}

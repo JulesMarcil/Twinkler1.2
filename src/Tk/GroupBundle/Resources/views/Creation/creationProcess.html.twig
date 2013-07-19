@@ -1,5 +1,10 @@
 {% extends 'TkUserBundle::frame.html.twig' %}
 
+{% block stylesheets %}
+ {{ parent() }}
+ <link href="{{ asset('css/creation-process.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+
 {% block navbartitle %}
 	<div  id="group-name-title">
 		<div id="title">
