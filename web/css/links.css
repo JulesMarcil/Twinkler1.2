@@ -133,18 +133,18 @@ strong{
 	text-align: center;
 }
 
-#blog-title{
-	text-align: center; 
-	color:#d3d3d3;
-	padding-bottom:30px; 
-	margin-bottom:50px; 
-	border-bottom:1px solid #d3d3d3; 
-	font-family:'Proxima-regular'
+.blog-container a:hover{
+	text-decoration: none;
 }
 
-#blog-title h2{
-	font-family:'Proxima-regular'
+.blog-container h3{
+	color: #272727;
 }
+
+.blog-container h3:hover{
+	color: #444444;
+}
+
 
 .blog-post{
 	font-family: "Proxima-regular", Helvetica, Arial, sans-serif;
@@ -159,6 +159,40 @@ strong{
 	margin-top: 40px;
 	margin-bottom: 1.3em;
 	text-align: justify;
+}
+
+/*----BLOG FRAME------*/
+.blog-post-list{
+	    color: #69AACA;
+    display: block;
+    font-weight: bold;
+    padding: 6px 10px 8px;
+    position: relative;
+    text-decoration: none;
+}
+
+.blog-post-list a:hover{
+	 text-decoration: none;
+}
+
+.blog-post-list li{
+	 border-bottom: 1px solid #EFF4F6;
+	 margin: 10px 0px;
+	 padding-bottom: 10px;
+	 list-style:none;
+}
+
+.selected{
+	background: none repeat scroll 0 0 #414141;
+    border-radius: 14px 14px 14px 14px;
+    border-top: 1px solid #FFFFFF;
+    color: #FFFFFF;
+    padding:5px 15px;
+}
+
+.selected:hover{
+	background: none repeat scroll 0 0 #6d6d6d;
+    color: #FFFFFF;
 }
 
 /*------PRESS-----*/

@@ -10,28 +10,34 @@
 {% block body %}
 <div class="container">
 	<div class="row">
-		<div class="span2" style="padding-top: 10px; text-align: center">
+		<div class="span3" style="padding-top: 80px; text-align: center">
 			<a href="{{ path('tk_user_homepage') }}">
-				<img id="tk-logo-hp" src="{{ asset('img/logo/twinkler_logo.png') }}" width="200px" alt="twinkler logo" style="margin-bottom: 40px;">
+				<img id="tk-logo-hp" src="{{ asset('img/logo/tk-star.png') }}" width="80px" alt="twinkler logo" style="margin-bottom: 40px;margin:0 0 10px 25px;">
 			</a>
-			<a href="{{ path('tk_welcome_blog') }}"><i class="icon-arrow-left"></i> Back to the Blog</a>
 			<div>
-				<h6 style="border-bottom: solid 1px; margin-top: 40px;">Other Blog Posts</h6>
-				<ul style="text-align: left">
-					<li><a href="{{ path('tk_welcome_blog_post', { 'date': '130717' }) }}">
-						Work hard, play hard! (Jul 17th)</a></li>
-					<li><a href="{{ path('tk_welcome_blog_post', { 'date': '130716' }) }}">
-						This is the beginning my friends! (Jul 16th)</a></li>
+				<h6 style="border-bottom: 3px double #EFF4F6; margin-top: 0px;   display:block; font-weight:bold; padding:6px 10px 8px; position:relative;margin:0 0 10px 25px;">More Blog Posts</h6>
+				<ul id="blog-post-list-js" class="blog-post-list" style="text-align: left">
+					<li><a id="130717" href="{{ path('tk_welcome_blog_post', { 'date': '130717' }) }}">
+						Work hard, play hard</a> <br> <small style="color:#D3D3D3; font-weight: normal">Jul 17th</small></li>
+					<li><a  id="130716" href="{{ path('tk_welcome_blog_post', { 'date': '130716' }) }}">
+						This is the beginning</a> <br> <small style="color:#D3D3D3; font-weight: normal"> Jul 16th</small></li>
 				</ul>
 			</div>
+			<a href="{{ path('tk_welcome_blog') }}" style="color:#D3D3D3; font-weight: normal">Back to the Blog</a>
 		</div>
 
 		<div class="blog-post span6 offset1" style="margin-top: 20px; margin-bottom: 60px;text-align: center;">
-			
+
+
+
 		{% block blog_post %}
 		{% endblock %}
 
 	</div>
 </div>
-
+	
 {% endblock %}
+
+        {% block javascripts %}
+         <script src="{{ asset('js/blog.js') }}"></script>
+        {% endblock %}
