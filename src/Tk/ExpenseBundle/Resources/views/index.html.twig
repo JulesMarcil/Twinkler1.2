@@ -28,11 +28,11 @@
 							<table>
 								{% for debt in debts %}
 								<tr style="height: 30px;">
-									<td style="text-align: left;padding-left: 5px"><img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" width="20px" 	alt="Payer picture" style="position: relative">  {{ debt[0] }}</td> 
-									<td style="color:#C8C8C8; font-size: 12px; widrh: 30px;padding-left: 5px">gives </td>
-									<td style="color:#99B335;padding-left: 5px">{{ debt[1] }} {{ currency }}</td>
-									<td style="color:#C8C8C8; font-size: 12px;padding-left: 5px"> to </td>
-									<td style="text-align: left; padding-left: 5px"><img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" width="20px" 	alt="Payer picture" style="position: relative"> {{debt[2] }}</td>
+									<td style="text-align: left;">{{ debt[0] }}</td> 
+									<td class="payback-text">gives </td>
+									<td style="color:#99B335;">{{ debt[1] }} {{ currency }}</td>
+									<td class="payback-text"> to </td>
+									<td style="text-align: left;">{{ debt[2] }}</td>
 								</tr>
 								{% endfor %}
 
@@ -65,7 +65,7 @@
 				</div>
 				<div id="timeline-expense-container">
 					{% include "TkExpenseBundle::addExpenseModal.html.twig" %}
-					<div class="expense-list flat-container" style="margin-bottom: 20px">
+					<div class="expense-list flat-container">
 						<div class="expense-header flat-header">
 							<div id="expense-title">
 								<h2>Expense Timeline</h2>
@@ -96,26 +96,31 @@
 					</div>
 					{% else %}
 					<div class="accordion" id="accordion2">
-					{% set previous = true %}
+					{% set date = true %}
+					{% set previous = null %}
 					{% for expense in all_expenses %}
 
+					{% if expense[0].date == previous %}
+					{% set date = false %}
+					{% else %}
+					{% set date = true %}
+					{% endif %}
     
-					{% if previous!=expense %}
-  
-				    <div style="display: inline-block; width:100%; margin-left: 15px; margin-bottom: 10px; padding:5">
-				        <div style="display: inline-block; width:80%; padding:5">
-				            <div class="liner" style="min-height:50%; border-bottom: 1px solid #fff; margin-top:-5px;"></div>
+					{% if date == true %}
+				    <div class="date-block">
+				        <div style="width:70%;">
+				            <div class="liner"></div>
 				        </div>
-				        <div style="display: inline-block;width:10%; color:#d4d4d4; text-align: center;">
-				        <p style="text-shadow:1px 1px white"><i class="icon-time"></i> {{ expense[0].date|date("d - m") }}</p>
+				        <div  class="expense-date">
+				        <p><i class="icon-time"></i> {{ expense[0].date|date("d - m") }}</p>
 				        </div>
-				        <div style="display: inline-block;width:8%; padding:5">
-				            <div class="liner" style="min-height:50%; border-bottom: 1px solid #fff; margin-top:-5px;"></div>
+				        <div style="width:8%;">
+				            <div class="liner"></div>
 				        </div>
 				    </div>
-
 					{% endif %}
-					{% set previous = expense %}
+
+					{% set previous = expense[0].date %}
 
 					<div class="accordion-group">
 						<div class="expense-list flat-container accordion-heading">
