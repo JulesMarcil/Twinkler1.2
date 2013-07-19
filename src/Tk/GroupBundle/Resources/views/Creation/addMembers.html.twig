@@ -1,7 +1,6 @@
-{% extends 'TkGroupBundle::index.html.twig' %}
+{% extends 'TkGroupBundle:Creation:creationProcess.html.twig' %}
 
 {% block content %}
-
 <div class="new-group row" style="text-align: center">
 	<div><img class="pinpoint-button" src="{{ asset('img/frame/group-creation-process-2.png') }}" style="margin-bottom:10px"></div>
 	<div class="span6 offset3 flat-container">
@@ -12,23 +11,17 @@
 		<div>
 			{% render(controller('TkGroupBundle:Default:addMember')) %}
 		</div>
-
 		<div>
 			{% render controller('TkUserBundle:Friends:inviteFriends') %}
 		</div>
-
 		{% if is_granted('ROLE_FACEBOOK') %}
 		<div>
 			{% render controller('TkUserBundle:Friends:inviteFacebook') %}
 		</div>
 		{% endif %}
-
 		<div class="flat-footer"s style="padding-top: 20px; margin-top: 20px; padding-bottom: 0;">
-			<a href="{{ path('tk_group_send_invitation') }}">Validate and continue</a>
+			<a href="{{ path('tk_group_send_invitation') }}">Validate and continue <i class="icon-arrow-right"></i></a>
 		</div>
-
-
 	</div>
 </div>
-
 {% endblock %}

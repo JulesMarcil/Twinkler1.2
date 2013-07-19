@@ -1,4 +1,4 @@
-{% extends 'TkUserBundle:Profile:show.html.twig' %}
+{% extends 'TkGroupBundle:Creation:creationProcess.html.twig' %}
 
 {% block content %}
 
@@ -8,12 +8,16 @@
 		<div class="flat-header" style="margin-bottom: 20px;">
 			<h1>Invite your friends to join your group</h1>
 		</div>
-		<div style="margin-bottom:20px">
-			<p><b>Send invitations to your friends to join "{{ app.user.currentMember.tgroup.name }}"</b></p>
-			{% render(controller('TkGroupBundle:Default:inviteUser')) %}
+		<div>
+			<p>Share the following link with your friends who are not on Twinkler so that they can acces the member you created for them</p>
+			<input type="text" value="http://www.twinkler.co/invitation/{{app.user.currentMember.tgroup.id}}/{{app.user.currentMember.tgroup.invitationToken}}" style="width: 90%"></input>
+		</div>
+		<div>
+			<p>Or share with Facebook inbox</p>
+			<a class="btn btn-primary" href="https://www.facebook.com/dialog/send?app_id=130641483808717&name=Click%20here%20to%20join%20my%20group%20on%20Twinkler&link=http://www.twinkler.co/invitation/{{app.user.currentMember.tgroup.id}}/{{app.user.currentMember.tgroup.invitationToken}}&redirect_uri=http://www.twinkler.co/group/send_invitation">Send Facebook Inbox</a>
 		</div>
 		<div class="flat-footer"s style="padding-top: 20px;">
-			<a href="{{ path('tk_group_homepage') }}" class="btn btn-success">Validate and continue</a>
+			<a href="{{ path('tk_group_homepage') }}">Validate and continue <i class="icon-arrow-right"></i></a>
 		</div>
 	</div>
 </div>

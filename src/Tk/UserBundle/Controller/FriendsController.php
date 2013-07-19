@@ -42,7 +42,7 @@ class FriendsController extends Controller
                       ->setParameter('id', $id);
             $u = $query->getResult();
             if($u){
-                $twinkler_facebook[] = $facebook_friend;
+                $twinkler_facebook[] = $u[0];
             }else{
                 $other_facebook_friends[] = $facebook_friend;
             }
@@ -57,7 +57,7 @@ class FriendsController extends Controller
         // remove facebook friends already in twinkler friends
         $twinkler_facebook_friends = array();
         foreach($twinkler_facebook as $tf){
-            if(!in_array($tf['id'], $friends_id)){
+            if(!in_array($tf->getFacebookId(), $friends_id)){
                 $twinkler_facebook_friends[] = $tf;
             }
         }

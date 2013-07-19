@@ -3,11 +3,11 @@
 	{% if twinkler_facebook_friends|length == 0 %}
 		<p>You do not have any other friend on Twinkler :( Invite them !</p>
 	{% else %}
-	{% for friend in twinkler_facebook_friends %}
+	{% for user in twinkler_facebook_friends %}
 	<div>
-		<img src="http://graph.facebook.com/{{friend.id}}/picture?width=60&height=60" class="img-circle" alt="{{ friend.name }}" style="position: relative; margin-right: 20px;" width="30px">
-		{{ friend.name }}
-		<a href="{{ path('tk_group_add_facebook', { 'id' : friend.id }) }}" class="btn btn-small">Add to my group</a>
+		<img src="http://graph.facebook.com/{{user.facebookId}}/picture?width=60&height=60" class="img-circle" alt="{{ user }}" style="position: relative; margin-right: 20px;" width="30px">
+		{{ user }}
+		<a href="{{ path('tk_group_add_friend', { 'id' : user.id }) }}" class="btn btn-small">Add to my group</a>
 	</div>
 	{% endfor %}
 	{% endif %}
