@@ -86,7 +86,7 @@
 					{% if all_expenses|length == 0 %}
 						<div class="pinpoint-tmln" style="margin-left: -7.55%">
 							<a  href="#" data-toggle="tooltip" rel="tooltip" title="" >
-								<img class="pinpoint-button" src="{{ asset('img/frame/tmln-btn.png') }}" class="img-circle" width="20px">
+								<img class="pinpoint-button" src="{{ asset('img/Frame/tmln-btn.png') }}" class="img-circle" width="20px">
 							</a>
 						</div>
 					<div class="expense-list flat-container" style="text-align: center">
@@ -126,7 +126,7 @@
 						<div class="expense-list flat-container accordion-heading">
 							<div class="pinpoint-tmln">
 								<a  href="#" data-toggle="tooltip" rel="tooltip" title="{{ expense[0].date|date("d - m") }}">
-									<img class="pinpoint-button" src="{{ asset('img/frame/tmln-btn.png') }}" class="img-circle" width="20px">
+									<img class="pinpoint-button" src="{{ asset('img/Frame/tmln-btn.png') }}" class="img-circle" width="20px">
 								</a>
 							</div>
 
@@ -142,7 +142,7 @@
 								{% endif %}
 								<div class="expense-details">								
 									<div style="color:rgb(140,140,140);">
-										<font style="color:#fb786b;">{{ expense[0].owner.name }} </font>added <font style="color:#0088CC;">{{ expense[0].amount }} {{ currency }}</font> for <font style="color:#fb786b;">{{ expense[0].name }}</font> 
+										<font style="color:#fb786b;">{{ expense[0].owner.name }} </font>paid <font style="color:#0088CC;">{{ expense[0].amount }} {{ currency }}</font> for <font style="color:#fb786b;">{{ expense[0].name }}</font> 
 									</div>
 									<div style"text-align: middle;">
 										<p style="margin-bottom:0px;"><font style="color:rgb(140,140,140)">Friends involved: </font> {% for member in expense[0].users %}{{ member.name }},  {% endfor %}</p>
