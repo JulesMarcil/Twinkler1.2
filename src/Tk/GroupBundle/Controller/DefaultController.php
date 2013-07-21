@@ -302,6 +302,21 @@ class DefaultController extends Controller
         return $this->redirect($this->generateUrl('tk_group_add_members'));
     }
 
+    public function addFacebookAction($id, $name)
+    {
+        $user = $this->get('security.context')->getToken()->getUser();
+
+        $member = new Member();
+        $member->setName($name);
+        $member->setTGroup($user->getCurrentMember()->getTGroup());
+
+        $em = $this->getDoctrine()->getEntityManager();
+        $em->persist($member);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('tk_group_add_members'));
+    }
+
     public function sendReminderEmailAction()
     {
 

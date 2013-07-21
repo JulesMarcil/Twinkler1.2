@@ -19,6 +19,7 @@ class FriendsController extends Controller
 
         return $this->render('TkUserBundle:Friends:inviteFacebook.html.twig', array(
           'twinkler_facebook_friends' => $friends[0],
+          'other_facebook_friends' => $friends[1],
         ));  
     }
 
@@ -62,28 +63,5 @@ class FriendsController extends Controller
             }
         }
         return array($twinkler_facebook_friends, $other_facebook_friends);
-    }
-
-    public function inviteFacebookFormAction()
-    {
-        $defaultData = array('message' => 'Type your message here');
-        $form = $this->createFormBuilder($defaultData)
-            ->add('name', 'text')
-            ->add('email', 'email')
-            ->add('message', 'textarea')
-            ->getForm();
-
-            if ($request->isMethod('POST')) {
-                $form->bind($request);
-
-                // data is an array with "name", "email", and "message" keys
-                $data = $form->getData();
-
-                return $this->redirect($this->generateUrl('tk_group_add_members'));
-            }
-
-        return $this->render('TkUserBundle:Friends:inviteFacebookForm.html.twig', array(
-            'form' => $form->createView(),
-        ));
     }
 }

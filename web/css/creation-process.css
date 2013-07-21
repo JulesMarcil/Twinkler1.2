@@ -37,3 +37,9 @@
 .add-members .add-button{
 	width: 20%; text-align: right;
 }
+
+/* --- facebook table --- */
+
+#facebook-table tr{
+	display: none;
+}
