@@ -15,7 +15,7 @@ $(document).ready(function() {
 /*--------CHARTS & TIMLINE SIZE--------*/
 var activePage = document.URL.split("/").pop();
 if (activePage!=="lists"){
-var members_nb= members.length;
+var members_nb= balances.length;
 };
 var navbarHeight=$("#navbar-row").height();
 
@@ -47,7 +47,7 @@ var graphColor=function(graphData){
 
 if (activePage!=="lists"){
 var members_chart=[];
-for (var i = 0; i < members.length; i++) {
+for (var i = 0; i < balances.length; i++) {
 	members_chart[i]='';
 
 }
@@ -74,42 +74,6 @@ new Chart(ctx).Bar(data,{
 	scaleShowLabels : false
 });
 };
-
-/*-------labels------*/
-if (activePage!=="lists"){
-$('#chart-labels').width($('#balanceChart').width());
-		for(var i=0; i<members.length;i++){
-			if (activePage==="expenses"){
-				if (balances[i]>=0){
-				var column_member="<td style='width:70px; min-width:70px; color:#A8BD44; vertical-align:top;overflow: hidden; padding:0'> <div>"+ members[i]+" </td>	";			
-				var column_balance="<td style='width:70px; min-width:70px; color:#A8BD44; vertical-align:top;overflow: hidden; padding:0'> "+ balances[i]+currency+" </td>	";
-				}else{
-
-				var column_member="<td style='width:70px; min-width:70px; color:#F97E76;vertical-align:top;overflow: hidden; padding:0'> "+ members[i]+" </td>	";			
-				var column_balance="<td style='width:70px; min-width:70px; color:#F97E76;vertical-align:top;overflow: hidden; padding:0'> "+ balances[i]+currency+" </td>	";
-
-				}
-			}else{
-				if (balances[i]>=0){
-				var column_member="<td style='width:100px; color:#A8BD44;vertical-align:top;'> "+ members[i]+" </td>	";			
-				var column_balance="<td style='width:100px; color:#A8BD44;vertical-align:top;'> "+ balances[i]+currency+" </td>	";
-				}else{
-
-				var column_member="<td style='width:100px; color:#F97E76;vertical-align:top;'> "+ members[i]+" </td>	";			
-				var column_balance="<td style='width:100px; color:#F97E76;vertical-align:top;'> "+ balances[i]+currency+" </td>	";
-
-				}
-
-			}
-
-
-			$('#member-row').append(column_member);
-			$('#balance-row').append(column_balance);
-	};
-
-
-};
-
 
 /*-------TOOLTIPS--------*/
     $(function () {
