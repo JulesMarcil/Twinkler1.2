@@ -1,8 +1,8 @@
 /* --- Group members picture toggle --- */
 
 $(document).ready(function() { 
-    $("#second-row-big").on("click", "#toggle-button", function(){
-    	$(this).closest("#second-row-big").find("#pictures").slideToggle();
+	$("#second-row-big").on("click", "#toggle-button", function(){
+		$(this).closest("#second-row-big").find("#pictures").slideToggle();
     	if($(this).text() === 'hide members'){
     		$(this).text('show members');	
     	}else{
@@ -10,6 +10,8 @@ $(document).ready(function() {
     	}
     })
 });
+
+
 
 
 /*--------CHARTS & TIMLINE SIZE--------*/
@@ -108,12 +110,12 @@ $(document).ready(function() {
 $(document).ready(function() { 
     $("#show-all-button").on("click", function(){
     	$(".expense-block").fadeIn();
-    	$("#only-mine-button").removeClass("active");
-    	$(this).addClass("active");
+		$("#only-mine-button").removeClass("active");
+		$(this).addClass("active");
     });
     $("#only-mine-button").on("click", function(){
     	$(".expense-block").filter(".nottagged").fadeOut();
-    	$("#show-all-button").removeClass("active");
+		$("#show-all-button").removeClass("active");
     	$(this).addClass("active");
     });
 });
