@@ -182,6 +182,7 @@
 	text-decoration: none;
 	padding: 0px 10px;
 	color: #C8C8C8;
+	cursor: pointer;
 }
 
 #filter-buttons .active{
