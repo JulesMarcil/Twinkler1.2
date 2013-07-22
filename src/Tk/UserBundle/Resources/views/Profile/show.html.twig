@@ -127,7 +127,14 @@
 	<div class="span6">
 		<div id="group-summary" class="flat-container">
 			<div class="flat-header" style="height:34px;min-height:34px; margin-bottom:10px">
-				<h3>Your Groups</h3>
+				<div>
+					<h3>You have {{app.user.members|length}} Groups</h3>
+				</div>
+				<a href="{{ path('tk_group_new') }}">
+					<div id="start-group-btn">
+						<i class="icon-plus" style="color:#fcd5d2;"></i> start new group
+					</div>
+				</a>
 			</div>
 
 			{% if app.user.members|length == 0 %}

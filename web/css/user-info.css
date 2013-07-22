@@ -129,10 +129,25 @@ a:hover{
 	text-align: left;
 }
 
+#group-summary .flat-header > div{
+	display: inline-block;
+	width: 40%;
+}
+
 #group-summary .flat-header h3{
 	margin: 0px 15px;
 	color:#FCD5D2;
 	font-size:16px;
+}
+
+#group-summary .flat-header > a{
+	display: inline-block;
+	position: absolute;
+	right: 0;
+	vertical-align: middle;
+	padding: 6px 6px;
+	border-left: 1px solid rgb(243,203,199);
+	color: #E9F0F4;
 }
 
 #group-summary .accordion{
