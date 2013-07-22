@@ -239,52 +239,6 @@ class DefaultController extends Controller
         return $this->redirect($this->generateUrl('tk_user_homepage')); 
     }
 
-    public function sendInvitationAction()
-    {
-        return $this->render('TkGroupBundle:Creation:sendInvitations.html.twig');
-    }
-
-    public function inviteUserAction()
-    {
-        return $this->render('TkGroupBundle:GroupActions:inviteUser.html.twig');
-    }
-
-    public function sendInvitationEmailAction()
-    {
-        $member = $this->getUser()->getCurrentMember();
-
-        $defaultData = array('email' => '');
-        $form = $this->createFormBuilder($defaultData)
-            ->add('email', 'email', array('attr' => array('placeholder' => 'Email',)))
-            ->getForm();
-
-        $request = $this->get('request');
-
-        if ($request->isMethod('POST')) {
-
-            $form->bind($request);
-
-            if ($form->isValid()) {
-
-            $data = $form->getData();
-
-            $message = \Swift_Message::newInstance()
-                        ->setSubject('You received an invitation to join Twinkler !')
-                        ->setFrom(array('jules@twinkler.co' => 'Jules from Twinkler'))
-                        ->setTo($data['email'])
-                        ->setContentType('text/html')
-                        ->setBody($this->renderView(':emails:invitationEmail.email.twig', array('member' => $member, 'email' => $data['email'])))
-                    ;
-            $this->get('mailer')->send($message);
-
-            return $this->redirect($this->generateUrl('tk_group_homepage'));
-        }}
-
-        return $this->render('TkGroupBundle:GroupActions:sendEmailForm.html.twig', array(
-            'form' => $form->createView(),
-            ));
-    }
-
     public function addFriendAction($id)
     {
         $em = $this->getDoctrine()->getEntityManager();
@@ -299,20 +253,17 @@ class DefaultController extends Controller
         $em->persist($member);
         $em->flush();
 
-        return $this->redirect($this->generateUrl('tk_group_add_members'));
-    }
+        $user = $this->getUser();
+        $group = $user->getCurrentMember()->getTGroup();
 
-    public function addFacebookAction($id, $name)
-    {
-        $user = $this->get('security.context')->getToken()->getUser();
-
-        $member = new Member();
-        $member->setName($name);
-        $member->setTGroup($user->getCurrentMember()->getTGroup());
-
-        $em = $this->getDoctrine()->getEntityManager();
-        $em->persist($member);
-        $em->flush();
+        $message = \Swift_Message::newInstance()
+                    ->setSubject($user.' added you to the group'.$group->getName())
+                    ->setFrom(array('jules@twinkler.co' => 'Jules from Twinkler'))
+                    ->setTo($friend->getEmail())
+                    ->setContentType('text/html')
+                    ->setBody($this->renderView(':emails:addedToGroup.email.twig', array('user' => $user, 'member' => $member)))
+                ;
+        $this->get('mailer')->send($message);
 
         return $this->redirect($this->generateUrl('tk_group_add_members'));
     }

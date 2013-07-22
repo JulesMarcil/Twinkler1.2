@@ -3,10 +3,9 @@
 {% block content %}
 <div class="new-group row">
 	<div class="span6 offset3" style="text-align: center">
-	<div><img class="pinpoint-button" src="{{ asset('img/Frame/group-creation-process-1.png') }}" style="margin-bottom:20px"></div>
-		<div class="flat-container">
+		<div class="flat-container" style="width: 100%">
 			<div class="flat-header">
-				<h3>Create a New Group</h3>
+				<h3 style="text-align: center">Create a New Group</h3>
 			</div>
 			<form action="{{ path('tk_group_new') }}" method="post" {{ form_enctype(form) }} style="margin:0">
 				<div class="new-group-content">

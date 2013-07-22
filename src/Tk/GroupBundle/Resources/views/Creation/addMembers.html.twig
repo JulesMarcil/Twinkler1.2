@@ -2,24 +2,24 @@
 
 {% block content %}
 <div class="new-group row" style="text-align: center">
-	<div><img class="pinpoint-button" src="{{ asset('img/Frame/group-creation-process-2.png') }}" style="margin-bottom:20px"></div>
-	<div class="span6 offset3 flat-container">
-		<div class="flat-header" style="margin-bottom: 20px;">
-			<h3>Add members to <b>{{ app.user.currentMember.tgroup.name }}</b></h3>
+	<div class="span10 offset1 flat-container">
+		<div class="flat-header">
+			<h3>Add members to the group <b>{{ app.user.currentMember.tgroup.name }}</b></h3>
 		</div>
-		<div>
+		<div class="row" style="margin-top: 5px">
+		<div class="span5" id="add-member-block">
 			{% render(controller('TkGroupBundle:Default:addMember')) %}
+			<div id="middle-border">
+			</div>
 		</div>
-		<div>
+		<div class="span5" id="add-friend-block">
 			{% render controller('TkUserBundle:Friends:inviteFriends') %}
 		</div>
-		{% if is_granted('ROLE_FACEBOOK') %}
-		<div>
-			{% render controller('TkUserBundle:Friends:inviteFacebook') %}
 		</div>
-		{% endif %}
 		<div class="flat-footer"s style="padding-top: 20px; margin-top: 20px; padding-bottom: 0;">
-			<a href="{{ path('tk_group_send_invitation') }}"><div class="flat-btn flat-pk" style="padding: 10px 20px">Validate and Continue</div></a>
+			<a href="{{ path('tk_group_homepage') }}">
+				<div class="flat-btn flat-pk" style="padding: 10px 20px">Validate and Continue</div>
+			</a>
 		</div>
 	</div>
 </div>

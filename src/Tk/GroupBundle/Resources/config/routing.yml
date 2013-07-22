@@ -33,9 +33,6 @@ tk_group_add_members:
 tk_group_add_friend:
     pattern:  /add/friend/{id}
     defaults: { _controller: TkGroupBundle:Default:addFriend }
-tk_group_add_facebook:
-    pattern:  /add/facebook/{id}/{name}
-    defaults: { _controller: TkGroupBundle:Default:addFacebook }
 
 tk_group_remove_member:
     pattern:  /remove/member/{id}
@@ -43,15 +40,3 @@ tk_group_remove_member:
 tk_group_close:
     pattern:  /close/{id}
     defaults: { _controller: TkGroupBundle:Default:closeGroup }
-
-tk_group_send_invitation:
-    pattern:  /send_invitation/
-    defaults: { _controller: TkGroupBundle:Default:sendInvitation }
-
-tk_group_invite_user:
-    pattern:  /add/invite/
-    defaults: { _controller: TkGroupBundle:Default:inviteUser }
-
-tk_group_send_email:
-    pattern:  /add/invite/email/
-    defaults: { _controller: TkGroupBundle:Default:sendInvitationEmail }

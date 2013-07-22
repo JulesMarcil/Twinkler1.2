@@ -10,17 +10,9 @@ class FriendsController extends Controller
 {
     public function inviteFriendsAction()
     {    
-        return $this->render('TkUserBundle:Friends:inviteFriends.html.twig');  
-    }
-
-    public function inviteFacebookAction()
-    {    
-        $friends = $this->getFacebookFriendsAction();
-
-        return $this->render('TkUserBundle:Friends:inviteFacebook.html.twig', array(
-          'twinkler_facebook_friends' => $friends[0],
-          'other_facebook_friends' => $friends[1],
-        ));  
+        return $this->render('TkUserBundle:Friends:inviteFriends.html.twig', array(
+            'facebook_friends' => $this->getFacebookFriendsAction()
+            ));  
     }
 
     private function getFacebookFriendsAction()
@@ -33,7 +25,6 @@ class FriendsController extends Controller
 
         // Split Facebook friends between Twinkler users and not
         $twinkler_facebook = array();
-        $other_facebook_friends = array();
 
         $em = $this->getDoctrine()->getEntityManager();
         foreach($facebook_friends as $facebook_friend){
@@ -44,8 +35,6 @@ class FriendsController extends Controller
             $u = $query->getResult();
             if($u){
                 $twinkler_facebook[] = $u[0];
-            }else{
-                $other_facebook_friends[] = $facebook_friend;
             }
         }
 
@@ -62,6 +51,6 @@ class FriendsController extends Controller
                 $twinkler_facebook_friends[] = $tf;
             }
         }
-        return array($twinkler_facebook_friends, $other_facebook_friends);
+        return $twinkler_facebook_friends;
     }
 }

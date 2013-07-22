@@ -17,44 +17,13 @@
 		</div>
 		<div class="group-mgt-button">
 			<div class="edit-group flat-btn flat-pk flat-large">	
-				<a class="edit-group-a accordion-toggle" data-toggle="collapse" href="#collapse-add-members">	
+				<a class="edit-group-a" href="{{ path('tk_group_add_members') }}">	
 					<div>
 						<i class="icon-plus-sign"></i>   
-						Add Member
+						Add a Friend
 					</div>		
 				</a>				
 			</div>
-			<div class="edit-group flat-btn flat-pk flat-large">	
-				<a class="edit-group-a accordion-toggle" data-toggle="collapse" href="#collapse-send-invites">	
-					<div>
-						<i class="icon-envelope"></i>   
-						Invite Friends
-					</div>		
-				</a>				
-			</div>
-		</div>
-
-		<div>
-			<div id="collapse-add-members" class="accordion-body collapse">
-			  	<div class="accordion-inner">
-					<div class="well" style="position: relative">
-					{% render(controller('TkGroupBundle:Default:addMember')) %}
-					</div>
-    				<a class="btn" href="{{ path('tk_group_homepage') }}" style="position: absolute; bottom: 35px; right: 20px;">Hide</a>
-				</div>
-  			</div>
-		</div>
-
-		<div>
-			<div id="collapse-send-invites" class="accordion-body collapse">
-			  	<div class="accordion-inner">	
-					<div class="well" style="postion: relative">
-					<h5>Send invitations to your friends to join your group "{{ app.user.currentMember.tgroup.name }}" on Twinkler</h5>
-					{% include 'TkGroupBundle:GroupActions:inviteUser.html.twig' %}
-					<a class="btn" href="#" style="position: absolute; bottom: 35px; right: 20px;">Hide</a>
-					</div>	
-				</div>
-			</div>			
 		</div>
 
 		<div class="subheader">	
