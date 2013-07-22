@@ -8,12 +8,18 @@ $(document).ready(function() {
 	});
 
 	// show only facebook friends matching input
-	$("#facebook-input").keyup(function() {
+	$("#friend-input").keyup(function() {
 		input_content = $(this).val();
 		if (input_content === ''){
-			$('#facebook-table .name').closest("tr").hide();
+			$('#friend-table .name').closest("tr").show();
 		}else{
-			$('#facebook-table .name').closest("tr").show().find(".name").not(':contains(' + input_content + ')').closest("tr").hide();
+			$('#friend-table .name').closest("tr").show().find(".name").not(':contains(' + input_content + ')').closest("tr").hide();
 		}
 	});
+	// Scroll in friend table
+$("#friend-table").slimScroll({
+    height: '160px'
 });
+});
+
+

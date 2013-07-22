@@ -10,8 +10,13 @@ class FriendsController extends Controller
 {
     public function inviteFriendsAction()
     {    
+        if($this->getUser()->getFacebookId()){
+            $facebook_friends = $this->getFacebookFriendsAction();
+        }else{
+            $facebook_friends = null;
+        }
         return $this->render('TkUserBundle:Friends:inviteFriends.html.twig', array(
-            'facebook_friends' => $this->getFacebookFriendsAction()
+            'facebook_friends' => $facebook_friends,
             ));  
     }
 
