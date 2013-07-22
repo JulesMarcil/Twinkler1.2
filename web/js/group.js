@@ -120,9 +120,9 @@ $('#chart-labels').width($('#balanceChart').width());
 /*-------Pinpoint buttons on timeline (date)--------*/
 
 $('.pinpoint-button').hover(function () {
-    this.src = 'http://twinkler.co/img/frame/tmln-btn-hover.png';
+    this.src = 'http://twinkler.co/img/Frame/tmln-btn-hover.png';
 }, function () {
-    this.src = 'http://twinkler.co/img/frame/tmln-btn.png';
+    this.src = 'http://twinkler.co/img/Frame/tmln-btn.png';
 });
 
 var today=new Date();
