@@ -123,14 +123,19 @@ $('#today-pinpoint').attr('title', dd +"/"+mm);
 
 
 /*----chart scroll-----*/
-$(document).ready(
-
-  function() { 
-
+$(document).ready(function() { 
     $("#balance-slimscroll").niceScroll();
+});
 
-  }
+/* --- Expense filter --- */
+$(document).ready(function() { 
+    $("#show-all-button").on("click", function(){
+    	$(".expense-block").fadeIn();
+    });
+    $("#only-mine-button").on("click", function(){
+    	$(".expense-block").filter(".nottagged").fadeOut();
+    });
+});
 
-);
 
 

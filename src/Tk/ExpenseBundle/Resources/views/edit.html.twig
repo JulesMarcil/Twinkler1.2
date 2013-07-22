@@ -4,7 +4,6 @@
 			<h2>Edit expense</h2>
 		</div>
 	</div>
-	<div>
 	<form action="{{ path('tk_expense_edit', { 'id' : expense.id }) }}" method="post" {{ form_enctype(form) }}>
 	    {{ form_errors(form) }}
 
