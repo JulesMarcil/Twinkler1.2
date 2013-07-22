@@ -141,18 +141,18 @@ header{
 	color: rgba(250,250,250,0.8);;
 }
 
-#group > .member{
+#group .member{
 	display: inline-block; 
 	margin-left: 10px; 
 	margin-right: 10px;
 	position: relative;
 }
 
-#group > .member > img{
+#group .member > img{
 	width: 60px;
 }
 
-#group > .member > p{
+#group .member > p{
 	font-weight: bold;
 }
 

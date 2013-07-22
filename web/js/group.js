@@ -1,3 +1,16 @@
+/* --- Group members picture toggle --- */
+
+$(document).ready(function() { 
+    $("#group").on("click", "#toggle-button", function(){
+    	$(this).closest("#group").find("#pictures").slideToggle();
+    	if($(this).text() === 'hide members'){
+    		$(this).text('show members');	
+    	}else{
+    		$(this).text('hide members');
+    	}
+    })
+});
+
 
 /*--------CHARTS & TIMLINE SIZE--------*/
 var activePage = document.URL.split("/").pop();
