@@ -135,48 +135,39 @@ a:hover{
 	font-size:16px;
 }
 
-#group-box{
-	padding-top: 10px;
-	padding-bottom: 10px;	
-	color: #5e6d82;
-  	border-bottom: 1px solid rgb(200,200,200);
-}
-
-.accordion{
+#group-summary .accordion{
 	margin-bottom: 0;
 }
 
-.accordion-group-icon{
-	position: absolute;
-	top: 5px;
-	left: 10px;
-	display:inline-block;
+.group-box{	
+	color: #5e6d82;
+	border:none;
+  	border-bottom: 1px solid rgb(200,200,200);
+	width: 100%;
+	background-color:#ffffff;
+	border-bottom-left-radius:0px;
+	border-bottom-right-radius:0px;
 }
-
-.accordion-group{
-  border:none;
-  width: 100%;
-  margin-bottom:2px;
-  background-color:#ffffff;
-  border-bottom-left-radius:0px;
-  border-bottom-right-radius:0px;
-  border-top-left-radius:0px;
-  border-top-right-radius:0px;
-  display:inline-block;
+.group-box:last-child{
+	border:none;
 }
 
 .accordion-heading{
 	display: block;
 	padding-left: 20px;
 	text-align: left;
+}
 
+.accordion-group-icon{
+	position: absolute;
+	top: 5px;
+	left: 0px;
 }
 
 .accordion-heading > div{
 	display: inline-block;
 	width: 100%;
 	vertical-align: top;
-	padding-top: 10px;
 }
 
 .accordion-heading-left{
@@ -219,26 +210,9 @@ a:hover{
 
 .accordion-inner {
 	background-color:#F3F3F3;
-  border-bottom-color:#E5E5E5;
-  border-bottom-style:solid;
-  border-bottom-width:1px;
-}
-
-.user-group-btn{
-	text-decoration: none;
-	opacity: 0.8;
-}
-
-.user-group-btn:hover{
-	text-decoration: none;
-	opacity: 1;
-}
-
-.user-group-btn div{
-	min-height: 30px;
-	line-height: 30px;
-	background-color: #f97e76;
-	color: white;
+	border-bottom-color:#E5E5E5;
+	border-bottom-style:solid;
+	border-bottom-width:1px;
 }
 
 /*-------GROUP CREATION-----*/
