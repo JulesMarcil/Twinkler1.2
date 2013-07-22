@@ -173,6 +173,23 @@
 	vertical-align: middle;
 }
 
+#filter-buttons{
+	display: inline-block;
+	margin-left: 5px;
+}
+
+#filter-buttons a{
+	text-decoration: none;
+	padding: 0px 10px;
+	color: #C8C8C8;
+}
+
+#filter-buttons .active{
+	background-color: #C8C8C8;
+	color: white;
+	border-radius: 14px;
+}
+
 #expense-summary{
 	float: right;
 	text-align: right;

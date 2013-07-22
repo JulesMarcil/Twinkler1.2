@@ -158,48 +158,10 @@ header{
 
 /* --- toolbar (bottom right) --- */
 
-#toolbar{
+#toggle-button{
 	position: absolute;
-	bottom: 10px;
-	right: 10px;
-	text-align: right;
-    display: block;
-    width: 150px;
-}
-
-
-#toolbar .dropdown-menu{
-	left: -200px;
-}
-
-.btn-navbar{
-	min-width: 40px;
-	min-height:40px;
-	background: #e6e6e6; /* Old browsers */
-	background: -moz-linear-gradient(top, rgba(200,200,200,0.4) 0%, rgba(200,200,200,0.4) 50%, rgba(180,180,180,0.4) 51%, rgba(180,180,180,0.4) 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(200,200,200,0.4)), color-stop(50%,rgba(200,200,200,0.4)), color-stop(51%,rgba(180,180,180,0.4)), color-stop(100%,rgba(180,180,180,0.4))); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top, rgba(200,200,200,0.4) 0%,rgba(200,200,200,0.4) 50%,rgba(180,180,180,0.4) 51%,rgba(180,180,180,0.4) 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top, rgba(200,200,200,0.4) 0%,rgba(200,200,200,0.4) 50%,rgba(180,180,180,0.4) 51%,rgba(180,180,180,0.4) 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top, rgba(200,200,200,0.4) 0%,rgba(200,200,200,0.4) 50%,rgba(180,180,180,0.4) 51%,rgba(180,180,180,0.4) 100%); /* IE10+ */
-	background: linear-gradient(to bottom, rgba(200,200,200,0.4) 0%,rgba(200,200,200,0.4) 50%,rgba(180,180,180,0.4) 51%,rgba(180,180,180,0.4) 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e6e6e6', endColorstr='#d2d2d2',GradientType=0 ); /* IE6-9 */
-	border-radius: 40px;
-	border: 2px solid rgba(255, 255, 255, 0.6);
-	display: inline-block;
-	text-align: center;
-	position: relative;
-}
-
-.btn-navbar i{
-	position: absolute;
-	top: 5px;
-	color: white;
-	text-shadow: rgba(0, 0, 0, 0.5) 0px 1px 0px;
-
-}
-
-.btn-quick-add{
-  display: inline-block;
+	bottom: 0;
+	right: 0;
 }
 
 /* --- selection menu --- */
