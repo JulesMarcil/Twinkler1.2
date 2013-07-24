@@ -287,7 +287,7 @@ class DefaultController extends Controller
                         ->setFrom(array('jules@twinkler.co' => 'Jules from Twinkler'))
                         ->setTo($member->getEmail())
                         ->setContentType('text/html')
-                        ->setBody($this->renderView(':emails:invitationEmail.email.twig', array('member' => $user->getCurrentMember())))
+                        ->setBody($this->renderView(':emails:invitationEmail.email.twig', array('invited' => $member, 'member' => $user->getCurrentMember())))
                 ;
                 $mailer->send($message);
             }else{
