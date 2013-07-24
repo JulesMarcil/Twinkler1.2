@@ -6,12 +6,12 @@
 	<img src="{{ asset(member.user.picture.path) }}" class="img-circle" alt="{{ member.name }}" style="position: relative">
 	{% endif %}
 	<p style="color: rgb(121,136,151);text-shadow:  white 0px 1px 0px;" data-name="{{member.name}}" data-email="{{member.user.email}}">{{ member.name }}</p>
-	<a data-id="{{member.id}}" {% if member.user %}data-user="{{member.user.id}}"{% endif %} class="remove-added-member" style="position: absolute; top: 0; right: 0; cursor: pointer">x</a>
+	<a data-id="{{member.id}}" {% if member.user %}data-user="{{member.user.id}}"{% endif %} class="remove-added-member" style="position: absolute; top: 0; right: 0; cursor: pointer"><img src="{{ asset('img/Frame/delete-member.png') }}"  alt="{{ member.name }}" ></a>
 </div> 
 {% else %}
 <div class="member">
 	<img src="{{ asset('uploads/profile-pictures/profile-pic.png') }}" class="img-circle" alt="{{ member.name }}" style="position: relative">
 	<p style="color: rgb(121,136,151);text-shadow: white 0px 1px 0px;">{{ member.name }}</p>
-	<a data-id="{{member.id}}" {% if member.user %}data-user="{{member.user.id}}"{% endif %} class="remove-added-member" style="position: absolute; top: 0; right: 0; cursor: pointer">x</a>
+	<a data-id="{{member.id}}" {% if member.user %}data-user="{{member.user.id}}"{% endif %} class="remove-added-member" style="position: absolute; top: 0; right: 0; cursor: pointer"><img src="{{ asset('img/Frame/delete-member.png') }}"  alt="{{ member.name }}" ></a>
 </div>
 {% endif %}
