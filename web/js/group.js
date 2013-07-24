@@ -120,5 +120,17 @@ $(document).ready(function() {
     });
 });
 
+/*----expense modal scroll-----*/
+$(document).ready(function() { 
+
+$(function(){
+    $('#expense-slimscroll').slimScroll({
+        height: Math.min('450',$(window).height()-120)+'px'
+    });
+});
+
+});
+
+
 
 
