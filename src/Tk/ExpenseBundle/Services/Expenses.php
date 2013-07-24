@@ -166,7 +166,7 @@ class Expenses {
             reset($positive);
             reset($negative);
 
-            if (current($positive) <= 0.1) { $continue = false; } else { $continue = true; }
+            if (current($positive) <= 0.2) { $continue = false; } else { $continue = true; }
         }
 
         return $payments;
