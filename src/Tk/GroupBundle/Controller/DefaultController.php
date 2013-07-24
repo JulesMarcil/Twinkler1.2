@@ -147,23 +147,13 @@ class DefaultController extends Controller
             $member->setInvitationToken($member->generateInvitationToken());
             $member->setTGroup($this->getUser()->getCurrentMember()->getTGroup());
 
-            if($data['email']){
-                $message = \Swift_Message::newInstance()
-                            ->setSubject('You received an invitation to join Twinkler !')
-                            ->setFrom(array('jules@twinkler.co' => 'Jules from Twinkler'))
-                            ->setTo($data['email'])
-                            ->setContentType('text/html')
-                            ->setBody($this->renderView(':emails:invitationEmail.email.twig', array('member' => $this->getUser()->getCurrentMember(), 'email' => $data['email'])))
-                        ;
-                $this->get('mailer')->send($message);
-            }
-
             $em = $this->getDoctrine()->getEntityManager();
             $em->persist($member);
             $em->flush();
 
-            $url = $this->getRequest()->headers->get("referer");
-            return $this->redirect($url);
+            return $this->render("TkGroupBundle:Creation:showAddedMember.html.twig", array(
+                'member' => $member,
+            ));
         }}
 
         return $this->render('TkGroupBundle:GroupActions:addMember.html.twig', array(
@@ -173,6 +163,9 @@ class DefaultController extends Controller
 
     public function addMembersAction()
     {   
+        $new_ids = array();
+        $this->get('session')->set('new_ids', $new_ids);
+
         return $this->render('TkGroupBundle:Creation:addMembers.html.twig');      
     }
 
@@ -253,19 +246,71 @@ class DefaultController extends Controller
         $em->persist($member);
         $em->flush();
 
+        $session = $this->get('session');
+        $new_ids = $session->get('new_ids');
+        $new_ids[] = $id;
+        $session->set('new_ids', $new_ids);
+
+        return $this->render("TkGroupBundle:Creation:showAddedMember.html.twig", array(
+            'member' => $member,
+        ));
+    }
+
+    public function removeAddedMemberAction($id)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $member = $em->getRepository('TkUserBundle:Member')->find($id);
+        $this->removeMemberAction($member, $em);
+        
+        if($member->getUser()){
+            $session = $this->get('session');
+            $new_ids = $session->get('new_ids');
+            $pos = array_search($member->getUser()->getId(), $new_ids);
+            print($pos);
+            unset($new_ids[$pos]);
+            $session->set('new_ids', $new_ids);
+        }
+
+        return $this->redirect($this->generateUrl('tk_group_add_members')); 
+    }
+
+    public function validateMembersAction()
+    {
         $user = $this->getUser();
         $group = $user->getCurrentMember()->getTGroup();
+        $mailer = $this->get('mailer');
 
-        $message = \Swift_Message::newInstance()
-                    ->setSubject($user.' added you to the group'.$group->getName())
-                    ->setFrom(array('jules@twinkler.co' => 'Jules from Twinkler'))
-                    ->setTo($friend->getEmail())
-                    ->setContentType('text/html')
-                    ->setBody($this->renderView(':emails:addedToGroup.email.twig', array('user' => $user, 'member' => $member)))
+        foreach($group->getMembers() as $member){
+            if(!$member->getUser() and $member->getEmail()){
+                $message = \Swift_Message::newInstance();
+                $message->setSubject($user.' sent you an invitation on Twinkler')
+                        ->setFrom(array('jules@twinkler.co' => 'Jules from Twinkler'))
+                        ->setTo($member->getEmail())
+                        ->setContentType('text/html')
+                        ->setBody($this->renderView(':emails:invitationEmail.email.twig', array('member' => $user->getCurrentMember())))
                 ;
-        $this->get('mailer')->send($message);
+                $mailer->send($message);
+            }else{
+            }
+        }
 
-        return $this->redirect($this->generateUrl('tk_group_add_members'));
+        $repo = $this->getDoctrine()->getEntityManager()->getRepository('TkUserBundle:User');
+
+        foreach($this->get('session')->get('new_ids') as $id){
+
+            $u = $repo->find($id);
+
+            $message = \Swift_Message::newInstance();
+            $message->setSubject($user.' added you to a group on Twinkler')
+                    ->setFrom(array('jules@twinkler.co' => 'Jules from Twinkler'))
+                    ->setTo($u->getEmail())
+                    ->setContentType('text/html')
+                    ->setBody($this->renderView(':emails:addedToGroup.email.twig', array('user' => $u, 'member' => $user->getCurrentMember())))
+            ;
+            $mailer->send($message);
+        }
+
+        return $this->redirect($this->generateUrl('tk_group_homepage'));
     }
 
     public function sendReminderEmailAction()

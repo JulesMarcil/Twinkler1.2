@@ -1,7 +1,7 @@
 <div class="add-members">
 	<div class="subheader">
 		<span style="display: block; height: 30px; vertical-align: middle; padding-left: 10px;">
-		<h3>Add a Friend already on Twinkler</h3>
+		<h3>Add a Friend from Twinkler</h3>
 		</span>
 	</div>
 
@@ -20,7 +20,7 @@
 			{% for user in app.user.friends  %}
 			{% if user.currentMember == null or user.currentMember.tgroup != app.user.currentMember.tgroup %}
 
-			<tr>
+			<tr id="tr-user-{{user.id}}">
 				<td style="width: 40px;">
 					{% if user.facebookId %}
 					<img src="http://graph.facebook.com/{{user.facebookId}}/picture?width=60&height=60" alt="{{ user }}" style="position: relative;" width="30px">
@@ -31,7 +31,7 @@
 				<td class="name">
 					{{ user }}
 				</td>
-				<td class="add-button"><a href="{{ path('tk_group_add_friend', { 'id' : user.id }) }}" class="btn btn-small">Add</a></td>
+				<td class="add-button"><button data-id="{{user.id}}" class="btn btn-small">Add</button></td>
 			</tr>
 
 			{% endif %}
@@ -40,7 +40,7 @@
 			{% for user in facebook_friends  %}
 			{% if user.currentMember == null or user.currentMember.tgroup != app.user.currentMember.tgroup %}
 
-			<tr>
+			<tr id="tr-user-{{user.id}}">
 				<td style="width: 40px;">
 					{% if user.facebookId %}
 					<img src="http://graph.facebook.com/{{user.facebookId}}/picture?width=60&height=60" alt="{{ user }}" style="position: relative;" width="30px">
@@ -51,7 +51,7 @@
 				<td class="name">
 					{{ user }}
 				</td>
-				<td class="add-button"><a href="{{ path('tk_group_add_friend', { 'id' : user.id }) }}" class="btn btn-small">Add</a></td>
+				<td class="add-button"><button data-id="{{user.id}}" class="btn btn-small">Add</button></td>
 			</tr>
 
 			{% endif %}
