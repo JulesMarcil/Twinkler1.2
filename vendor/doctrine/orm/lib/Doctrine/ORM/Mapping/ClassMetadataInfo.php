@@ -358,7 +358,7 @@ class ClassMetadataInfo implements ClassMetadata
      * - <b>scale</b> (integer, optional, schema-only)
      * The scale of a decimal column. Only valid if the column type is decimal.
      *
-     [* - <b>'unique'] (string, optional, schema-only)</b>
+     * - <b>'unique'</b> (string, optional, schema-only)
      * Whether a unique constraint should be generated for the column.
      *
      * @var array
@@ -3025,5 +3025,19 @@ class ClassMetadataInfo implements ClassMetadata
         }
 
         return $className;
+    }
+
+    /**
+     * @param string $name
+     *
+     * @return mixed
+     */
+    public function getMetadataValue($name) {
+
+        if (isset($this->$name)) {
+            return $this->$name;
+        }
+
+        return null;
     }
 }

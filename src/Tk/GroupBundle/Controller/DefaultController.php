@@ -184,30 +184,10 @@ class DefaultController extends Controller
 
     private function removeMemberAction($member, $em)
     {
-        $all_todos = $member->getTGroup()->getTodos();
-        $todos_number = 0;
-        foreach($all_todos as $todo){
-            if($todo->getOwner() == $member or $todo->getAuthor() == $member){
-                $todos_number = 1;
-                break;
-            }
-            if($todos_number == 1){
-                break;
-            }
-        }
-
-        $all_items = $member->getTGroup()->getShoppingItems();
-        $items_number = 0;
-        foreach($all_items as $item){
-            if($item->getAuthor() == $member or $item->getValidator() == $member){
-                $items_number = 1;
-                break;
-            }
-        }
         if($member->getUser()){
             $member->getUser()->setCurrentMember(null);
         }
-        $n = sizeof($member->getMyExpenses()) + sizeof($member->getForMeExpenses()) + $todos_number + $items_number;
+        $n = sizeof($member->getMyExpenses()) + sizeof($member->getForMeExpenses());
         if ($n == 0){
             $em->remove($member);
         }else{

@@ -36,20 +36,6 @@ class TGroup
     protected $date;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="city", type="string", length=255, nullable=true)
-     */
-    protected $city;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="country", type="string", length=255, nullable=true)
-     */
-    protected $country;
-
-    /**
      * @ORM\ManyToOne(targetEntity="Tk\GroupBundle\Entity\Currency", cascade={"persist"})
      */
     protected $currency;
@@ -73,16 +59,9 @@ class TGroup
     protected $expenses;
 
     /**
-     * @ORM\OneToMany(targetEntity="Tk\ListBundle\Entity\Todo", mappedBy="group", cascade={"persist"})
-     * @ORM\OrderBy({"date" = "DESC"})
+     * @ORM\OneToMany(targetEntity="Tk\ListBundle\Entity\Lists", mappedBy="group", cascade={"persist"})
      */
-    protected $todos;
-
-    /**
-     * @ORM\OneToMany(targetEntity="Tk\ListBundle\Entity\ShoppingItem", mappedBy="group", cascade={"persist"})
-     * @ORM\OrderBy({"addedDate" = "DESC"})
-     */
-    protected $shoppingItems;
+    protected $lists;
 
     /**
      * Get id
@@ -141,52 +120,6 @@ class TGroup
     }
 
     /**
-     * Set city
-     *
-     * @param string $city
-     * @return TGroup
-     */
-    public function setCity($city)
-    {
-        $this->city = $city;
-
-        return $this;
-    }
-
-    /**
-     * Get city
-     *
-     * @return string 
-     */
-    public function getCity()
-    {
-        return $this->city;
-    }
-
-    /**
-     * Set country
-     *
-     * @param string $country
-     * @return TGroup
-     */
-    public function setCountry($country)
-    {
-        $this->country = $country;
-
-        return $this;
-    }
-
-    /**
-     * Get country
-     *
-     * @return string 
-     */
-    public function getCountry()
-    {
-        return $this->country;
-    }
-
-    /**
      * Set invitationToken
      *
      * @param string $invitationToken
@@ -233,8 +166,6 @@ class TGroup
     {
         $this->members = new \Doctrine\Common\Collections\ArrayCollection();
         $this->expenses = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->todos = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->shoppingItems = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -286,143 +217,6 @@ class TGroup
         return $sum;
     }    
 
-    /**
-     * Add todos
-     *
-     * @param \Tk\ListBundle\Entity\Todo $todos
-     * @return TGroup
-     */
-    public function addTodo(\Tk\ListBundle\Entity\Todo $todos)
-    {
-        $this->todos[] = $todos;
-
-        return $this;
-    }
-
-    /**
-     * Remove todos
-     *
-     * @param \Tk\ListBundle\Entity\Todo $todos
-     */
-    public function removeTodo(\Tk\ListBundle\Entity\Todo $todos)
-    {
-        $this->todos->removeElement($todos);
-    }
-
-    /**
-     * Get todos
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getTodos()
-    {
-        return $this->todos;
-    }
-
-    /**
-     * Get Active todos
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getActiveTodos()
-    {
-        $all_todos = $this->todos;
-        $active_todos = new \Doctrine\Common\Collections\ArrayCollection();
-
-        foreach($all_todos as $todo){
-            if($todo->getActive() == 1){
-                $active_todos->add($todo);
-            }else{}
-        }
-        return $active_todos;
-    }
-
-    /**
-     * Get Inactive todos
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getInactiveTodos()
-    {
-        $all_todos = $this->todos;
-        $inactive_todos = new \Doctrine\Common\Collections\ArrayCollection();
-
-        foreach($all_todos as $todo){
-            if($todo->getActive() == 0){
-                $inactive_todos->add($todo);
-            }else{}
-        }
-        return $inactive_todos;
-    }
-
-    /**
-     * Add shoppingItems
-     *
-     * @param \Tk\ListBundle\Entity\ShoppingItem $shoppingItems
-     * @return TGroup
-     */
-    public function addShoppingItem(\Tk\ListBundle\Entity\ShoppingItem $shoppingItems)
-    {
-        $this->shoppingItems[] = $shoppingItems;
-
-        return $this;
-    }
-
-    /**
-     * Remove shoppingItems
-     *
-     * @param \Tk\ListBundle\Entity\ShoppingItem $shoppingItems
-     */
-    public function removeShoppingItem(\Tk\ListBundle\Entity\ShoppingItem $shoppingItems)
-    {
-        $this->shoppingItems->removeElement($shoppingItems);
-    }
-
-    /**
-     * Get shoppingItems
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getShoppingItems()
-    {
-        return $this->shoppingItems;
-    }
-
-    /**
-     * Get Active shoppingItems
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getActiveShoppingItems()
-    {
-        $all_items = $this->shoppingItems;
-        $active_items = new \Doctrine\Common\Collections\ArrayCollection();
-
-        foreach($all_items as $item){
-            if($item->getActive() == 1){
-                $active_items->add($item);
-            }else{}
-        }
-        return $active_items;
-    }
-
-    /**
-     * Get Inactive shoppingItems
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getInactiveShoppingItems()
-    {
-        $all_items = $this->shoppingItems;
-        $inactive_items = new \Doctrine\Common\Collections\ArrayCollection();
-
-        foreach($all_items as $item){
-            if($item->getActive() == 0){
-                $inactive_items->add($item);
-            }else{}
-        }
-        return $inactive_items;
-    }
     /**
      * Add members
      *
@@ -518,5 +312,38 @@ class TGroup
     public function getCurrency()
     {
         return $this->currency;
+    }
+
+    /**
+     * Add lists
+     *
+     * @param \Tk\ListBundle\Entity\Lists $lists
+     * @return TGroup
+     */
+    public function addList(\Tk\ListBundle\Entity\Lists $lists)
+    {
+        $this->lists[] = $lists;
+
+        return $this;
+    }
+
+    /**
+     * Remove lists
+     *
+     * @param \Tk\ListBundle\Entity\Lists $lists
+     */
+    public function removeList(\Tk\ListBundle\Entity\Lists $lists)
+    {
+        $this->lists->removeElement($lists);
+    }
+
+    /**
+     * Get lists
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getLists()
+    {
+        return $this->lists;
     }
 }

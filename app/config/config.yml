@@ -101,6 +101,7 @@ fos_user:
             name:               fos_user_registration_form
             validation_groups:  [Registration, Default]
 
+#FOSFacebookBundle
 fos_facebook:
     alias:  facebook
     app_id: %api_facebook_id%
@@ -108,5 +109,8 @@ fos_facebook:
     cookie: true
     permissions: [email, user_birthday, user_location]
 
-
+#FOSRestBundle
+fos_rest:
+    routing_loader:
+        default_format: json
 

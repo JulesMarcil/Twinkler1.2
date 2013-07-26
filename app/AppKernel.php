@@ -26,6 +26,8 @@ class AppKernel extends Kernel
             new Tk\ExpenseBundle\TkExpenseBundle(),
             new Tk\ListBundle\TkListBundle(),
             new FOS\FacebookBundle\FOSFacebookBundle(),
+            new FOS\RestBundle\FOSRestBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

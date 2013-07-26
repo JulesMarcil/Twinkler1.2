@@ -279,7 +279,7 @@ class Member
             $paid += $expense->getAmount();
         }
 
-        return $paid - $supposed_paid;
+        return round($paid - $supposed_paid,2);
     }
 
     private function forMe($expense)

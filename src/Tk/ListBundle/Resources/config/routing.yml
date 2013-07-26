@@ -2,38 +2,10 @@ tk_list_homepage:
     pattern:  /lists
     defaults: { _controller: TkListBundle:List:index }
 
-tk_list_todos_new:
-    pattern:  /lists/todos/new
-    defaults: { _controller: TkListBundle:Todos:new }
+tk_list_details:
+    pattern: /lists/{id}
+    defaults: { _controller: TkListBundle:List:details }
 
-tk_list_todos_edit:
-    pattern:  /lists/todos/edit/{id}
-    defaults: { _controller: TkListBundle:Todos:edit }
-
-tk_list_todos_check:
-    pattern:  /lists/todos/check/{id}
-    defaults: { _controller: TkListBundle:Todos:check }
-
-tk_list_todos_remove:
-    pattern:  /lists/todos/remove/{id}
-    defaults: { _controller: TkListBundle:Todos:remove }
-
-tk_list_shopping_new:
-    pattern: /lists/shopping/new
-    defaults: { _controller: TkListBundle:Shopping:new }
-
-tk_list_shopping_check:
-    pattern: /lists/shopping/check/{id}
-    defaults: { _controller: TkListBundle:Shopping:check }
-
-tk_list_shopping_remove:
-    pattern: /lists/shopping/remove/{id}
-    defaults: { _controller: TkListBundle:Shopping:remove }
-
-tk_list_shopping_readd:
-    pattern: /lists/shopping/re_add/{id}
-    defaults: { _controller: TkListBundle:Shopping:reAdd }
-
-tk_list_shopping_receive_by_email:
-    pattern: /lists/shopping/receive/email
-    defaults: { _controller: TkListBundle:Shopping:receiveEmail }
+tk_list_new:
+    pattern: /new/lists
+    defaults: { _controller: TkListBundle:List:new }
