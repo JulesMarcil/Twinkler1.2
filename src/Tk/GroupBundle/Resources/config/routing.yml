@@ -46,3 +46,7 @@ tk_group_remove_member:
 tk_group_close:
     pattern:  /close/{id}
     defaults: { _controller: TkGroupBundle:Default:closeGroup }
+
+tk_group_ajax:
+    pattern: /ajax/settings
+    defaults: { _controller: TkGroupBundle:Default:ajaxContent }

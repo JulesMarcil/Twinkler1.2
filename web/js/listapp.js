@@ -140,8 +140,7 @@ var ItemListView = Backbone.View.extend({
 	}
 });
 
-$(document).ready(function() {	
-
+var Appstart = function(){
 	var itemList = new ItemList();
 	var itemListView = new ItemListView({collection: itemList});
 	itemList.fetch({
@@ -164,7 +163,19 @@ $(document).ready(function() {
 	var itemForm = new ItemForm({model: formItem, collection: itemList});
 	itemForm.render();
 	$('#form-box').append(itemForm.el);
-	
+
+	$("#list-menu").find('a').on('click', function(e){
+		e.preventDefault();
+		var id = $(this).data('id');
+		$.get('/Twinkler1.2/web/app_dev.php/group/ajax/change/lists/'+id, function(response){
+			$('#content-container').html(response);
+			Appstart();
+		});
+	});
+}
+
+$(document).ready(function() {	
+	Appstart();
 });
 
 

@@ -20,6 +20,11 @@ class DefaultController extends Controller
         }
     }
 
+    public function ajaxContentAction()
+    {
+      return $this->render('TkGroupBundle:Default:content.html.twig');
+    }
+
     public function switchAction($id)
     {
     	$this->changeCurrentMemberAction($id);

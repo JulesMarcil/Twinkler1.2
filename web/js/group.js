@@ -11,9 +11,6 @@ $(document).ready(function() {
     })
 });
 
-
-
-
 /*--------CHARTS & TIMLINE SIZE--------*/
 var activePage = document.URL.split("/").pop();
 if (activePage!=="lists"){
@@ -106,8 +103,8 @@ $(document).ready(function() {
     $("#balance-slimscroll").niceScroll();
 });
 
-/* --- Expense filter --- */
 $(document).ready(function() { 
+    // ---> Expense filter
     $("#show-all-button").on("click", function(){
     	$(".expense-block").fadeIn();
 		$("#only-mine-button").removeClass("active");
@@ -118,19 +115,142 @@ $(document).ready(function() {
 		$("#show-all-button").removeClass("active");
     	$(this).addClass("active");
     });
-});
 
-/*----expense modal scroll-----*/
-$(document).ready(function() { 
-
-$(function(){
-    $('#expense-slimscroll').slimScroll({
-        height: Math.min('450',$(window).height()-120)+'px'
-    });
-});
+    // --> expense modal scroll
+	$(function(){
+	    $('#expense-slimscroll').slimScroll({
+	        height: Math.min('450',$(window).height()-120)+'px'
+	    });
+	});
 
 });
 
+/* --- AJAX FOR SELECTION MENU --- */
+$(document).ready(function() {
+
+// ---> ajax for going to settings
+	$("#navbar-settings").on('click', 'a', function(e){
+		e.preventDefault();
+		$.get('/Twinkler1.2/web/app_dev.php/group/ajax/settings', function(response){
+			$('#content-container').html(response);
+			window.history.pushState("", "", 'settings');
+			// rappeler les fonctions de mise en forme
+			$("#balance-slimscroll").niceScroll();
+			var graphColor=function(graphData){
+				var chartColor=[];
+				for(var i=0; i<graphData.length;i++){
+					if(graphData[i]>=0){
+						chartColor.push("rgba(168,189,68,0.5)");
+					}else{			
+						chartColor.push("rgba(249,126,118,0.5)");
+					}
+				};
+				return chartColor
+			}
+
+			if (activePage!=="lists"){
+			var members_chart=[];
+			for (var i = 0; i < balances.length; i++) {
+				members_chart[i]='';
+
+			}
 
 
+
+			var colorFill=graphColor(balances);
+			var data = {
+						labels : members_chart,
+						datasets : [
+									{
+										fillColor : colorFill,
+										strokeColor : "rgba(220,220,220,1)",
+										data : balances
+									}
+									]
+								}
+
+			};
+
+			var ctx = document.getElementById("balanceChart").getContext("2d");
+			new Chart(ctx).Bar(data,{
+			    scaleOverlay : false,
+				scaleShowLabels : false
+			});
+		});
+	});
+
+// ---> ajax for going to expenses 
+	$("#navbar-expenses").on('click', 'a', function(e){
+		e.preventDefault();
+		$.get('/Twinkler1.2/web/app_dev.php/group/ajax/expenses', function(response){
+			$('#content-container').html(response);
+			window.history.pushState("", "", 'expenses');
+			// rappeler les fonctions de mise en forme
+			$("#balance-slimscroll").niceScroll();
+			$('#expense-slimscroll').slimScroll({
+		        height: Math.min('450',$(window).height()-120)+'px'
+		    });
+			var graphColor=function(graphData){
+				var chartColor=[];
+				for(var i=0; i<graphData.length;i++){
+					if(graphData[i]>=0){
+						chartColor.push("rgba(168,189,68,0.5)");
+					}else{			
+						chartColor.push("rgba(249,126,118,0.5)");
+					}
+				};
+				return chartColor
+			}
+
+			if (activePage!=="lists"){
+			var members_chart=[];
+			for (var i = 0; i < balances.length; i++) {
+				members_chart[i]='';
+
+			}
+
+
+
+			var colorFill=graphColor(balances);
+			var data = {
+						labels : members_chart,
+						datasets : [
+									{
+										fillColor : colorFill,
+										strokeColor : "rgba(220,220,220,1)",
+										data : balances
+									}
+									]
+								}
+
+			};
+
+			var ctx = document.getElementById("balanceChart").getContext("2d");
+			new Chart(ctx).Bar(data,{
+			    scaleOverlay : false,
+				scaleShowLabels : false
+			});
+		});
+	});
+
+// ---> ajax for going to lists 
+	$("#navbar-lists").on('click', 'a', function(e){
+		e.preventDefault();
+		$.get('/Twinkler1.2/web/app_dev.php/group/ajax/lists', function(response){
+			$('#content-container').html(response);
+			window.history.pushState("", "", 'lists');
+			// rappeler les fonctions de mise en forme
+			// ajax create list form (copy paste from list.js (to factorize somewhere))
+			$("#create-list-button").on('click','a', function(e){
+				e.preventDefault();
+				$.get('/Twinkler1.2/web/app_dev.php/group/new/lists', function(response){
+					$('#list-menu').append(response).fadeIn();
+				});
+			});
+			// rappel de listapp.js
+			Appstart();
+		});
+	});
+
+});
 

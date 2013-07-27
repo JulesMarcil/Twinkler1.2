@@ -8,20 +8,35 @@ use Tk\ListBundle\Form\ListsType;
 
 class ListController extends Controller
 {
-    public function indexAction()
+    private function setSessionListIdAction()
     {
         $session = $this->get('session');
-    	
-        if(!$session->get('list_id')){
-            $list = $this->getUser()->getCurrentMember()->getTGroup()->getLists()->first();
-        	$session->set('list_id', $list->getId());
-        	$session->set('list_name', $list->getName());
-        }
+        $list_id = $session->get('list_id');
 
-        return $this->redirect($this->generateUrl('tk_list_details', array('id' => $session->get('list_id'))));
+        if(!$list_id){
+            $list = $this->getUser()->getCurrentMember()->getTGroup()->getLists()->first();
+            $session->set('list_id', $list->getId());
+            $session->set('list_name', $list->getName());
+        }else{
+            $group = $this->getUser()->getCurrentMember()->getTGroup();
+            $list = $this->getDoctrine()->getRepository('TkListBundle:Lists')->find($list_id);
+            if($list->getGroup() == $group){
+            }else{
+                $list = $group->getLists()->first();
+                $session->set('list_id', $list->getId());
+                $session->set('list_name', $list->getName());
+            }
+        }
     }
 
-    public function detailsAction($id)
+    public function indexAction()
+    {
+        $this->setSessionListIdAction();
+
+        return $this->render('TkListBundle::index.html.twig');
+    }
+
+    public function changeListAction($id)
     {
     	$session = $this->get('session');
     	$list = $this->getDoctrine()->getRepository('TkListBundle:Lists')->find($id);
@@ -29,6 +44,23 @@ class ListController extends Controller
     	$session->set('list_name', $list->getName());
 
     	return $this->render('TkListBundle::index.html.twig');
+    }
+
+    public function ajaxContentAction()
+    {
+        $this->setSessionListIdAction();
+
+        return $this->render('TkListBundle:List:content.html.twig');
+    }
+
+    public function ajaxChangeListsAction($id)
+    {
+        $session = $this->get('session');
+        $list = $this->getDoctrine()->getRepository('TkListBundle:Lists')->find($id);
+        $session->set('list_id', $id);
+        $session->set('list_name', $list->getName());
+
+        return $this->render('TkListBundle:List:content.html.twig');
     }
 
     public function newAction()
