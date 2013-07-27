@@ -1,5 +1,12 @@
 {% extends 'TkUserBundle::frame.html.twig' %}
 
+{% block stylesheets %}
+ {{ parent() }}
+ <link href="{{ asset('css/group-settings.css') }}" rel="stylesheet" type="text/css">
+ <link href="{{ asset('css/expenses.css') }}" rel="stylesheet" type="text/css">
+ <link href="{{ asset('css/lists.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+
 {% set group = app.user.currentMember.tgroup %}
 
 {% block navbartitle %}
@@ -59,13 +66,13 @@
 			<div  class="row" style="height:100%;">
 				<div class="span4 offset4" style="height:100%; text-align: center;">
 					<div id="navbar-settings" style="height:100%; display: inline-block; width: 32%; text-align: center; padding-top: 5px; padding-bottom: 5px;">
-						<a href="{{ path('tk_group_homepage') }}">Settings</a>
+						<a href="#">Settings</a>
 					</div>
 					<div id="navbar-expenses" style="height:100%; display: inline-block; width: 32%; text-align: center; padding-top: 5px; padding-bottom: 5px;">
-						<a href="{{ path('tk_expense_homepage') }}">Expenses</a>
+						<a href="#">Expenses</a>
 					</div>
 					<div id="navbar-lists" style="height:100%; display: inline-block; width: 32%; text-align: center; padding-top: 5px; padding-bottom: 5px;">
-						<a href="{{ path('tk_list_homepage') }}">Lists </a>
+						<a href="#">Lists </a>
 					</div>
 				</div>
 			</div>
@@ -75,4 +82,6 @@
 
 {% block javascripts %}
  	<script type='text/javascript' src="{{ asset('js/group.js') }}"></script>
+ 	<script src="{{ asset('js/listapp.js') }}"></script>
+	<script src="{{ asset('js/list.js') }}"></script>
 {% endblock %}

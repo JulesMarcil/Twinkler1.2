@@ -1,49 +1,7 @@
 {% extends 'TkGroupBundle::index.html.twig' %}
 
-{% set group = app.user.currentMember.tgroup %}
-
-{% block stylesheets %}
- {{ parent() }}
- <link href="{{ asset('css/lists.css') }}" rel="stylesheet" type="text/css">
-{% endblock %}
-
 {% block content %}
-<div class="row">
-	<div class="span3 offset1">
-		<div id="list-menu">
-			<div class="flat-container" style="width: 100%">
-			{% if group.lists|length == 0%}
-			<p>Your group has no lists. Too sad ...</p>
-			{% else %}
-			<ul>
-				{% for list in group.lists %}
-				<li><a href="{{ path('tk_list_details', { 'id': list.id }) }}">{{list.name}}</a></li>
-				{% endfor %}
-			</ul>
-			{% endif %}
-			</div>
-			<div id="create-list-button">
-				<a href="#" class="flat-btn flat-pk" style="height: 40px; width: 100%; margin-top: 10px; line-height: 40px;">Create a new List</a>
-			</div>
-		</div>
-	</div>
-	<div class="span7">
-		<div class="flat-container" style="width: 100%; padding: 5px">
-			<div class="flat-header">
-				<h3>{{ app.session.get('list_name') }}</h3>
-			</div>
-			<div id="form-box">
-			</div>
-			<table id="list-box">
-			</table>
-		</div>
-	</div>
 
-</div>
-{% endblock %}
+{% include 'TkListBundle:List:content.html.twig' %}
 
-{% block javascripts %}
-{{ parent() }}
-<script src="{{ asset('js/listapp.js') }}"></script>
-<script src="{{ asset('js/list.js') }}"></script>
 {% endblock %}
